@@ -667,7 +667,199 @@ Reviewer comments không chỉ là danh sách lỗi. Chúng thường cho bạn 
 
 ---
 
-## 13.13 Bài Tập Thực Hành
+## 13.13 LaTeX: Từ Draft Đến Manuscript Sẵn Nộp
+
+Hầu hết journal khoa học (IEEE, Springer, Elsevier, ACM, MDPI...) yêu cầu hoặc khuyến khích nộp bài bằng LaTeX. Nếu bạn chưa quen, đây là những gì cần biết để bắt đầu nhanh.
+
+### Hai cách dùng LaTeX
+
+| Lựa chọn | Khi nào dùng | Ưu điểm |
+|----------|-------------|---------|
+| **Overleaf** ([overleaf.com](https://www.overleaf.com)) | Mới bắt đầu, cần cộng tác real-time | Không cần cài đặt, có sẵn template journal, share link cho GVHD |
+| **TeX Live local** | Cần compile offline, project lớn, tích hợp CI/CD | Nhanh hơn, không phụ thuộc internet, AI có thể đọc/ghi file `.tex` trực tiếp |
+
+**Cài TeX Live (nếu chọn local):**
+
+```bash
+# macOS
+brew install --cask mactex-no-gui
+
+# Ubuntu/Debian
+sudo apt install texlive-full
+
+# Windows
+# Tải từ https://tug.org/texlive/
+```
+
+### Cấu trúc project LaTeX chuẩn
+
+```
+paper/
+├── main.tex            # File chính, \input từng section
+├── sections/
+│   ├── 01_introduction.tex
+│   ├── 02_related_work.tex
+│   ├── 03_methodology.tex
+│   ├── 04_results.tex
+│   └── 05_discussion.tex
+├── figures/
+│   ├── fig1_architecture.pdf
+│   └── fig2_results.pdf
+├── tables/
+│   └── tab1_comparison.tex
+├── references.bib      # BibTeX database
+├── IEEEtran.cls        # Class file của journal (hoặc template khác)
+└── Makefile             # Tùy chọn: tự động compile
+```
+
+### File `main.tex` mẫu (IEEE format)
+
+```latex
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cite}
+
+\title{Your Paper Title Here}
+\author{
+  \IEEEauthorblockN{Nguyen Van A}
+  \IEEEauthorblockA{University Name\\Email: a@uni.edu}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract here (150-250 words).
+\end{abstract}
+
+\begin{IEEEkeywords}
+keyword1, keyword2, keyword3
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_methodology}
+\input{sections/04_results}
+\input{sections/05_discussion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
+```
+
+### BibTeX: Quản lý references
+
+File `references.bib` chứa tất cả nguồn trích dẫn:
+
+```bibtex
+@article{smith2024deep,
+  title     = {Deep Learning for Channel Estimation in 6G},
+  author    = {Smith, John and Nguyen, Thi B.},
+  journal   = {IEEE Transactions on Communications},
+  volume    = {72},
+  number    = {3},
+  pages     = {1234--1248},
+  year      = {2024},
+  doi       = {10.1109/TCOMM.2024.xxxxx}
+}
+
+@inproceedings{tran2025transformer,
+  title     = {Transformer-Based Beamforming for ISAC Systems},
+  author    = {Tran, Van C. and Le, Minh D.},
+  booktitle = {IEEE ICC 2025},
+  pages     = {100--105},
+  year      = {2025}
+}
+```
+
+**Trích dẫn trong text:** `\cite{smith2024deep}` → [1], `\cite{smith2024deep, tran2025transformer}` → [1], [2]
+
+> 💡 **Tip:** Export BibTeX từ Google Scholar: bấm dấu `"` dưới mỗi bài → chọn BibTeX → copy vào file `.bib`.
+
+### Compile LaTeX
+
+```bash
+# Compile cơ bản (3 bước để resolve references)
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+
+# Hoặc dùng latexmk (tự động)
+latexmk -pdf main.tex
+```
+
+### AI hỗ trợ viết LaTeX: prompt thực tế
+
+**1. Sinh LaTeX từ outline:**
+
+> 📋 **Prompt Template — LaTeX Draft**
+> ```text
+> Tôi đang viết paper cho [tên journal/conference].
+> Dưới đây là outline của section [Introduction/Methods/...]:
+> [paste outline]
+>
+> Sinh LaTeX cho section này theo format [IEEEtran/Springer LNCS/Elsevier].
+> Dùng \cite{} cho references, \ref{} cho figures/tables.
+> Giữ giọng văn học thuật, tránh phóng đại.
+> ```
+
+**2. Tạo bảng LaTeX từ dữ liệu:**
+
+> 📋 **Prompt Template — LaTeX Table**
+> ```text
+> Chuyển bảng sau sang LaTeX dùng booktabs (\toprule, \midrule, \bottomrule).
+> Thêm caption và label. Format số với 2-3 chữ số thập phân.
+>
+> | Model | Accuracy | F1 | Params |
+> |-------|----------|-----|--------|
+> | CNN   | 0.923    | 0.91| 2.1M   |
+> | ViT   | 0.948    | 0.94| 86M    |
+> ```
+
+**3. Debug lỗi compile:**
+
+> 📋 **Prompt Template — LaTeX Debug**
+> ```text
+> LaTeX compile lỗi như sau:
+> [paste error log]
+>
+> File liên quan:
+> [paste đoạn code gây lỗi]
+>
+> Giải thích lỗi và sửa.
+> ```
+
+### Các lỗi LaTeX thường gặp
+
+| Lỗi | Nguyên nhân | Cách sửa |
+|-----|-------------|----------|
+| `Undefined control sequence` | Thiếu `\usepackage` | Thêm package tương ứng |
+| `Missing $ inserted` | Ký tự đặc biệt (`_`, `%`, `&`) ngoài math mode | Escape: `\_`, `\%`, `\&` |
+| `Citation undefined` | Chưa chạy `bibtex` | Chạy đủ: pdflatex → bibtex → pdflatex × 2 |
+| `Float too large` | Figure quá lớn | Thêm `[h!]` hoặc `[H]` (cần `\usepackage{float}`) |
+| `Overfull hbox` | Text tràn lề | Dùng `\sloppy` hoặc chỉnh wording |
+
+### Template journal phổ biến
+
+| Publisher | Template | Link |
+|-----------|----------|------|
+| **IEEE** | IEEEtran | [ieee.org/conferences/publishing/templates](https://www.ieee.org/conferences/publishing/templates.html) |
+| **Springer** | LNCS / svjour3 | [springer.com/gp/authors-editors/latex](https://www.springer.com/gp/computer-science/lncs/editor-guidelines/latex-templates) |
+| **Elsevier** | elsarticle | [ctan.org/pkg/elsarticle](https://ctan.org/pkg/elsarticle) |
+| **ACM** | acmart | [acm.org/publications/proceedings-template](https://www.acm.org/publications/proceedings-template) |
+| **MDPI** | mdpi | [mdpi.com/authors/latex](https://www.mdpi.com/authors/latex) |
+
+> 💡 **Overleaf có sẵn tất cả template trên** — search tên journal trong gallery sẽ ra ngay.
+
+---
+
+## 13.14 Bài Tập Thực Hành
 
 ### 🔧 Hands-on 13.1: Contribution Statement
 
@@ -712,7 +904,7 @@ Kiểm tra ít nhất 15 references của chính bạn theo 3 mức:
 
 ---
 
-## 13.14 Tóm Tắt Chương
+## 13.15 Tóm Tắt Chương
 
 Viết bài báo khoa học là quá trình nén một công trình nghiên cứu thành một lập luận học thuật đủ sắc để thuyết phục cộng đồng chuyên môn. Điều làm bài mạnh không phải là số lượng từ ngữ học thuật, mà là sự rõ ràng của gap, sự phù hợp của phương pháp, sự kỷ luật trong Results, và chiều sâu diễn giải trong Discussion. AI có thể giúp bạn đi nhanh hơn trong quá trình này, nhưng chỉ khi nó được dùng như một biên tập viên và bộ tăng lực cho tư duy, chứ không phải như người viết thay.
 

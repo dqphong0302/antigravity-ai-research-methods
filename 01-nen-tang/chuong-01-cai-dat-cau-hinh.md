@@ -131,10 +131,37 @@ Thay vì bắt đầu bằng lệnh cài, hãy kiểm tra môi trường trướ
 | **Terminal hoặc shell** | Có thể chạy lệnh cơ bản | Biết thao tác `cd`, `ls`, `mkdir`, kiểm tra file |
 | **Trình soạn thảo** | Một editor bất kỳ | Editor hỗ trợ Markdown, code, search toàn thư mục |
 | **Internet** | Ổn định cho xác thực và connector | Tách được lúc nào cần online, lúc nào làm local |
-| **Ngôn ngữ phân tích** | Không bắt buộc ngay | Có Python hoặc R nếu dự án cần xử lý dữ liệu |
+| **Node.js** | ≥ v18 LTS **(bắt buộc)** | Nền để chạy MCP servers (Consensus, Perplexity, NotebookLM...) |
+| **Python** | ≥ 3.10 **(bắt buộc)** | Chạy scripts phân tích, xử lý dữ liệu, ML/DL |
+| **Ngôn ngữ phân tích khác** | Tùy chọn | R, SPSS, Stata nếu dự án yêu cầu |
+| **LaTeX** | Tùy chọn (khuyến nghị) | Viết bài báo theo chuẩn journal (IEEE, Springer, Elsevier). Dùng Overleaf online hoặc TeX Live local |
 | **Trình duyệt** | Có thể đăng nhập và kiểm tra nguồn | Có bookmark cho các nguồn học thuật quan trọng |
 
-Điều bạn cần nhất không phải cấu hình mạnh nhất, mà là một môi trường **ổn định và dự đoán được**. Một chiếc máy rất mạnh nhưng thư mục bừa bộn, secrets để lung tung và connector bật tắt thất thường vẫn là một môi trường nghiên cứu tệ.
+### Kiểm tra Python và Node.js trước khi cài bất kỳ tool nào
+
+Đây là 2 runtime **bắt buộc**, không phải tùy chọn. Lý do:
+- **Node.js** là nền chạy tất cả MCP server (Consensus, Perplexity, NotebookLM, Smart PDF OCR, Playwright, Sequential Thinking). Không có Node.js → không có MCP → AI không gọi được tool nào.
+- **Python** là nền chạy mọi script xử lý dữ liệu, thống kê, machine learning, và visualization mà AI sinh ra cho bạn.
+
+Kiểm tra nhanh trong terminal:
+
+```bash
+# Kiểm tra Node.js
+node --version   # Cần ≥ v18.x
+npm --version    # Đi kèm Node.js
+
+# Kiểm tra Python
+python3 --version   # Cần ≥ 3.10
+pip3 --version      # Đi kèm Python
+```
+
+**Nếu chưa có:**
+- **Node.js:** Tải từ [nodejs.org](https://nodejs.org/) (chọn LTS), hoặc `brew install node` (macOS), `sudo apt install nodejs npm` (Ubuntu)
+- **Python:** Tải từ [python.org](https://www.python.org/downloads/), hoặc `brew install python` (macOS), `sudo apt install python3 python3-pip` (Ubuntu)
+
+> ⚠️ **Lưu ý:** Trên macOS, hệ thống có sẵn Python 2.x cũ — **không dùng được**. Phải cài Python 3.10+ riêng.
+
+Điều bạn cần nhất không phải cấu hình mạnh nhất, mà là một môi trường **ổn định và dự đoán được**. Một chiếc máy rất mạnh nhưng thư mục bừa bộn, secrets để lung tung và MCP server bật tắt thất thường vẫn là một môi trường nghiên cứu tệ.
 
 ## 1.5 Cài Đặt Theo Logic Đúng, Không Theo Thói Quen Chép Lệnh
 
