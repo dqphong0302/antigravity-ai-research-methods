@@ -13,113 +13,132 @@ Nếu `Chương 1` giúp bạn dựng **workspace nghiên cứu**, thì chương
 
 Chương này vì thế đóng vai trò chiếc cầu nối giữa phần setup và phần khám phá học thuật ở `Chương 3`. Mục tiêu không phải để bạn tạo ra những output trông ấn tượng ngay lập tức, mà để bạn bước vào giai đoạn xác định vấn đề nghiên cứu với một cách làm **có thể truy vết, có thể kiểm chứng, và đủ tỉnh táo trước thiên kiến của AI**.
 
-## 2.1 Prompt Engineering Cho Nghiên Cứu
+## 2.1 Dùng AI Agent Cho Nghiên Cứu: Đừng Chỉ Prompt, Hãy Giao Việc
 
-Nếu Antigravity là môi trường làm việc, thì prompt engineering là cách bạn đặt bài toán cho môi trường đó. Cùng một công cụ, khác biệt lớn nhất không nằm ở "mẹo prompt", mà nằm ở việc bạn có nói đủ rõ **mình đang nghiên cứu cái gì, cần AI làm phần nào, và output đó sẽ được dùng ra sao** hay không.
+Điểm khác nhau giữa một buổi "chat với AI" và một phiên làm việc nghiên cứu nghiêm túc nằm ở chỗ này: bạn không chỉ hỏi AI nghĩ gì. Bạn giao cho agent một **việc có thể thực thi** bằng công cụ, file, nguồn, và tiêu chí kiểm chứng rõ ràng.
 
-### Anatomy of a Research Prompt — Khung RCTFC Cho Câu Lệnh Nghiên Cứu
+Với nghiên cứu, một agent hữu ích thường phải làm được ít nhất một phần của các việc sau:
 
-Một prompt nghiên cứu hiệu quả thường có **5 thành phần**. Để dễ nhớ, bạn có thể gọi đây là khung `RCTFC`: `Role - Context - Task - Format - Constraint`.
+- tìm và truy nguồn tài liệu học thuật;
+- đọc file trong workspace;
+- trích xuất thông tin từ PDF, bảng dữ liệu, transcript hoặc notes;
+- chạy code hoặc tạo script để xử lý dữ liệu;
+- so sánh nhiều nguồn và chỉ ra chỗ mâu thuẫn;
+- để lại output đủ rõ để bạn kiểm tra và dùng tiếp.
+
+Nếu AI chỉ trả lời bằng một đoạn văn nghe mượt nhưng không cho bạn biết nó đã đọc gì, dùng tool nào, dựa trên nguồn nào, hay output sẽ được lưu ở đâu, thì trong workflow nghiên cứu, giá trị của nó rất hạn chế.
+
+### Từ prompt sang brief cho agent
+
+Khung `RCTFC` vẫn hữu ích, nhưng với AI agent, bạn nên hiểu nó như một **brief giao việc** chứ không chỉ là câu lệnh:
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│ 1. ROLE      → Vai trò bạn muốn AI đảm nhận             │
-│ 2. CONTEXT   → Bối cảnh nghiên cứu của bạn              │
-│ 3. TASK      → Nhiệm vụ cụ thể cần thực hiện            │
-│ 4. FORMAT    → Định dạng output mong muốn                │
-│ 5. CONSTRAINT → Giới hạn và điều kiện                    │
-└──────────────────────────────────────────────────────────┘
+R = ROLE        → AI đang đóng vai gì?
+C = CONTEXT     → Bối cảnh nghiên cứu cụ thể là gì?
+T = TASK        → Việc phải làm chính xác là gì?
+F = FORMAT      → Output cần ở dạng nào?
+C = CONSTRAINT  → Giới hạn, tiêu chí, điều cấm là gì?
 ```
 
-Đây không phải "công thức thần kỳ", mà là một checklist để giảm prompt mơ hồ. Khi thiếu một trong năm thành phần này, AI vẫn có thể trả lời, nhưng câu trả lời thường khó dùng trong nghiên cứu vì thiếu phạm vi, thiếu tiêu chí, hoặc thiếu định dạng đủ rõ để bạn kiểm tra tiếp.
+Trong thực hành nghiên cứu, một brief tốt thường thêm 3 lớp nữa:
 
-### Ví dụ: Prompt kém vs. Prompt tốt
+- **TOOLS:** agent nên dùng tool nào hoặc loại tool nào;
+- **VERIFICATION:** output phải được kiểm tra bằng cách nào;
+- **ARTIFACTS:** file, bảng, note, script, figure nào cần tạo ra sau phiên làm việc.
 
-**❌ Prompt kém:**
-```
+Nói ngắn gọn, một prompt nghiên cứu tốt thường trả lời được 4 câu:
+
+1. AI phải làm việc gì?
+2. AI được phép dùng công cụ nào?
+3. Tôi sẽ kiểm tra output bằng cách nào?
+4. Sau phiên này, project của tôi sẽ có thêm artifact gì?
+
+### Ví dụ: hỏi cho biết vs. giao việc để nghiên cứu tiếp được
+
+**❌ Hỏi cho biết**
+
+```text
 Tìm papers về AI trong giáo dục
 ```
 
-**✅ Prompt tốt:**
-```
-[ROLE] Với vai trò trợ lý nghiên cứu, 
-[CONTEXT] tôi đang làm literature review cho luận án tiến sĩ 
-về ứng dụng AI trong giáo dục STEM tại Việt Nam,
-[TASK] hãy sử dụng Consensus để tìm 10 bài báo peer-reviewed 
-gần đây nhất (2023-2026) về "AI-enhanced STEM education" 
-tập trung vào các quốc gia đang phát triển,
-[FORMAT] trình bày kết quả dưới dạng bảng với columns: 
-Tác giả, Năm, Tên bài, Phương pháp NC, Phát hiện chính, 
-Số citations.
-[CONSTRAINT] Chỉ bao gồm bài từ tạp chí Q1-Q2 (SJR). 
-Ưu tiên meta-analysis và systematic review.
+**✅ Giao việc để workflow đi tiếp được**
+
+```text
+[ROLE] Đóng vai trợ lý nghiên cứu học thuật.
+[CONTEXT] Tôi đang xây literature review cho đề tài về AI trong giáo dục STEM tại Việt Nam.
+[TASK] Hãy dùng công cụ tìm học thuật và web-grounded search để:
+1. tìm 8-12 nguồn neo có liên quan cao;
+2. phân loại chúng thành review paper, empirical paper, policy/document;
+3. trích xuất ngắn: context, method, key finding, limitation.
+[FORMAT] Trả về:
+- một bảng literature matrix ngắn;
+- một danh sách 3 tension chính trong field;
+- một mục "cần đọc paper gốc trước khi dùng".
+[CONSTRAINT]
+- không bịa citation;
+- nếu nguồn chưa chắc tồn tại hoặc chưa đủ thông tin, đánh dấu rõ;
+- ưu tiên nguồn có thể truy lại.
+[TOOLS] Dùng công cụ tìm học thuật trước, rồi dùng web search để kiểm tra chéo nếu cần.
+[VERIFICATION] Mọi claim quan trọng phải kèm gợi ý kiểm chứng.
+[ARTIFACTS] Tôi cần một literature-matrix draft có thể đưa vào workspace.
 ```
 
-### Pattern Library: 6 mẫu prompt mạnh nhất
+### 5 kiểu việc rất hợp để giao cho agent trong nghiên cứu
 
-#### Pattern 1: Landscape Explorer (Khám phá toàn cảnh)
-```
-Sử dụng Perplexity Research, hãy cho tôi overview toàn diện 
-về lĩnh vực [X]. Bao gồm:
-- Các trường phái/hướng nghiên cứu chính
-- Những nhà nghiên cứu hàng đầu
-- Các tạp chí quan trọng
-- Xu hướng 5 năm gần nhất
-- Research gaps đã được xác định
-```
+#### 1. Tìm và xác minh nguồn
 
-#### Pattern 2: Gap Finder (Tìm khoảng trống)
-```
-Tìm trên Consensus các systematic review và meta-analysis 
-về [topic], từ năm [X] đến nay. Với mỗi bài, trích xuất 
-phần "future research directions" hoặc "limitations". 
-Tổng hợp thành danh sách các research gaps đã được xác nhận.
-```
+Đây là chỗ agent mạnh hơn chatbot thuần vì nó có thể:
 
-#### Pattern 3: Method Advisor (Tư vấn phương pháp)
-```
-Tôi muốn nghiên cứu [câu hỏi NC]. Sử dụng Sequential 
-Thinking, hãy phân tích:
-1. Phương pháp nào phù hợp nhất? (định lượng/định tính/hỗn hợp)
-2. Thiết kế nghiên cứu cụ thể?
-3. Mẫu: Ai? Bao nhiêu? Cách chọn?
-4. Công cụ thu thập dữ liệu?
-5. Phương pháp phân tích?
-Với mỗi lựa chọn, giải thích lý do và trích dẫn phương 
-pháp luận từ Creswell hoặc Bryman.
-```
+- gọi công cụ tìm học thuật;
+- mở web để kiểm tra chéo;
+- truy về paper, review, policy document, dataset page.
 
-#### Pattern 4: Critical Reader (Đọc phản biện)
-```
-Đọc bài báo [tên/URL] và phân tích phản biện:
-- Điểm mạnh của phương pháp?
-- Hạn chế và thiên kiến tiềm ẩn?
-- Kết luận có được hỗ trợ đầy đủ bởi dữ liệu?
-- Khả năng tổng quát hóa (generalizability)?
-- Tôi có thể xây dựng gì trên nghiên cứu này?
-```
+#### 2. Trích xuất và tổ chức evidence
 
-#### Pattern 5: Statistics Helper (Trợ lý thống kê)
-```
-Tôi có dataset [mô tả] với biến phụ thuộc [Y] và các biến 
-độc lập [X1, X2, X3]. Dữ liệu là [kiểu dữ liệu]. 
-N = [size]. Hãy:
-1. Gợi ý phép kiểm thống kê phù hợp
-2. Kiểm tra assumptions cần thiết
-3. Viết code Python thực hiện phân tích
-4. Diễn giải kết quả bằng ngôn ngữ học thuật
-```
+Ví dụ:
 
-#### Pattern 6: Writing Partner (Đối tác viết)
-```
-Tôi đang viết phần [Introduction/Methods/Results/Discussion] 
-cho bài báo về [topic]. 
-Đây là outline của tôi: [outline]
-Đây là các key findings: [findings]
-Hãy giúp tôi viết draft phần này theo chuẩn [APA/IEEE]. 
-Sử dụng giọng văn học thuật, khách quan, với hedging language 
-phù hợp. Tôi sẽ review và chỉnh sửa sau.
-```
+- tóm tắt nhiều bài báo thành matrix;
+- gom future directions;
+- tách methods, findings, limitations;
+- tạo bibliography notes hoặc reading notes.
+
+#### 3. Làm việc với dữ liệu và script
+
+Đây là phần rất thực dụng mà nhiều người mới dùng AI bỏ lỡ. Agent có thể:
+
+- đọc file `CSV`;
+- tạo code Python/R;
+- draft syntax cho `SPSS` hoặc `Stata`;
+- vẽ figure;
+- tạo data dictionary hoặc metadata starter pack.
+
+#### 4. Stress-test logic học thuật
+
+Ví dụ:
+
+- tìm điểm yếu trong problem statement;
+- phản biện theory fit;
+- chỉ ra chỗ claim đi quá dữ liệu;
+- buộc bạn tách `Results` khỏi `Discussion`.
+
+#### 5. Tạo artifact để phiên sau làm tiếp được
+
+Một phiên làm việc tốt với agent không chỉ kết thúc bằng "tôi đã hiểu hơn". Nó nên kết thúc bằng một trong các thứ sau:
+
+- một file note;
+- một bảng;
+- một script;
+- một checklist;
+- một draft figure;
+- hoặc một log entry để lần sau không phải làm lại từ đầu.
+
+### 3 kiểu việc không nên giao trọn cho agent
+
+- **Chọn hộ kết luận khoa học cuối cùng**
+- **Đọc hộ dữ liệu định tính theo kiểu thay bạn diễn giải**
+- **Giữ hộ trách nhiệm đạo đức, pháp lý, và disclosure**
+
+Agent có thể hỗ trợ các bước dẫn tới quyết định. Nhưng quyết định học thuật cuối cùng vẫn phải là của bạn.
 
 ---
 
@@ -163,14 +182,14 @@ Khi AI đưa ra một thông tin, **kiểm tra với ít nhất một nguồn kh
 
 | AI đưa ra | Kiểm tra bằng |
 |-----------|---------------|
-| Một bài báo cụ thể | Google Scholar: Tìm tên bài + tác giả |
+| Một bài báo cụ thể | academic search hoặc Google Scholar: tìm tên bài + tác giả |
 | Một con số thống kê | Tìm primary source của con số đó |
 | Một khái niệm/định nghĩa | Kiểm tra trong textbook kinh điển |
-| Một xu hướng nghiên cứu | Xác nhận bằng Consensus hoặc Perplexity |
+| Một xu hướng nghiên cứu | Xác nhận bằng academic search hoặc web-grounded search |
 
 > 📋 **Prompt kiểm chứng nhanh:**
 > ```
-> Hãy tìm trên Perplexity Search xác nhận rằng bài báo 
+> Hãy dùng search tool để xác nhận rằng bài báo 
 > "[tên bài]" của [tác giả] thực sự tồn tại. Cho tôi URL 
 > trực tiếp đến bài báo.
 > ```
@@ -209,7 +228,7 @@ Mỗi khi sử dụng AI cho một task nghiên cứu, ghi lại:
 ## AI Usage Record #[number]
 
 **Ngày:** [date]
-**Công cụ:** [Consensus/Perplexity/NotebookLM/etc.]
+**Công cụ:** [academic search / web reasoning / notebook / code / OCR / etc.]
 **Mục đích:** [Tìm tài liệu/Phân tích dữ liệu/Soạn thảo/etc.]
 **Prompt sử dụng:** 
 ```
@@ -271,38 +290,38 @@ Dưới đây là quy trình tổng quát mà chúng ta sẽ đi sâu trong các
 ```
 Phase 1: EXPLORE (Khám phá)
 │
-├── Perplexity Research → Landscape overview
-├── Consensus → Systematic paper search
-├── Sequential Thinking → Problem decomposition
-└── OUTPUT: Research question + Initial bibliography
+├── Academic search tool → tìm paper, review, dataset, source gốc
+├── Web/reasoning tool → quét bối cảnh, grey literature, kiểm tra chéo
+├── Knowledge notebook / notes → gom nguồn, theme, tension
+└── OUTPUT: problem notes + initial bibliography + reading log
 │
 Phase 2: DESIGN (Thiết kế)
 │
-├── Sequential Thinking → Methodology selection
-├── Perplexity Reason → Design evaluation
-├── Code Execution → Power analysis, sampling
-└── OUTPUT: Research protocol
+├── Reasoning / analysis tool → problem decomposition, framework fit
+├── File + notes workspace → variable map, protocol draft, instrument draft
+├── Code / calculator tool → power analysis, sampling, simulation nếu cần
+└── OUTPUT: design brief + protocol + framework artifacts
 │
 Phase 3: COLLECT (Thu thập)
 │
-├── Smart PDF OCR → Digitize documents
-├── Playwright → Web data collection
-├── n8n → Automated pipelines
-└── OUTPUT: Raw dataset
+├── Forms / scripts / web collection tools → lấy dữ liệu có chủ đích
+├── OCR / PDF tools → số hóa tài liệu khó đọc
+├── Storage + naming workflow → tách raw / anonymized / processed
+└── OUTPUT: raw dataset / corpus + metadata + data policy
 │
 Phase 4: ANALYZE (Phân tích)
 │
-├── Code Execution → Statistical analysis
-├── Perplexity Reason → Interpretation check
-├── NotebookLM → Cross-source synthesis
-└── OUTPUT: Findings + Visualizations
+├── Code/data tool → cleaning, statistics, coding support, figures
+├── AI agent → dịch logic phân tích sang Python / R / SPSS / Stata nếu cần
+├── Reasoning tool → assumption check, interpretation restraint, synthesis
+└── OUTPUT: results tables + figures + analysis notes
 │
 Phase 5: COMMUNICATE (Truyền thông)
 │
-├── Writing tools → Manuscript drafting
-├── NotebookLM → Podcast, slides, video
-├── Consensus → Citation verification
-└── OUTPUT: Publication + Dissemination materials
+├── Writing / editing support → draft sections, revise, tighten claims
+├── Citation/source check → rà lại claim và nguồn
+├── Communication tools → slides, brief, teaching materials, media formats
+└── OUTPUT: manuscript + thesis assets + dissemination materials + disclosure
 ```
 
 ---
@@ -317,15 +336,21 @@ Phase 5: COMMUNICATE (Truyền thông)
 
 **Phiên làm việc với Antigravity:**
 
-1. **Perplexity Research:** "Recent trends in nanomaterial photocatalysis for industrial wastewater treatment 2024-2026"
-   → Nhận overview về 5 hướng chính, trong đó có green synthesis nano-composites
+1. **Dùng tool tìm học thuật** để lấy review paper, empirical paper và các nguồn neo quanh photocatalysis cho xử lý nước thải.
+   → Kết quả không chỉ là danh sách paper, mà là một bảng phân loại nguồn theo vật liệu, phương pháp, outcome và limitation.
 
-2. **Consensus:** Tìm "TiO2 graphene photocatalyst wastewater", filter: 2024-2026, Q1-Q2 journals
-   → Tìm được 12 papers, 3 là review papers
+2. **Dùng reasoning tool** để ép agent chỉ ra:
+   - field đang mạnh ở đâu;
+   - tension nào chưa được giải quyết;
+   - khoảng trống nào chỉ là "chưa ai làm", và khoảng trống nào thật sự đáng nghiên cứu.
 
-3. **Sequential Thinking:** Phân tích gap trong 12 papers → Phát hiện: chưa ai thử bio-synthesized TiO₂/rGO composite cho nước thải dệt nhuộm quy mô pilot
+3. **Dùng notebook/notes tool** để gom các nguồn liên quan nhất thành một reading pack.
+   → Minh đọc lại paper gốc trước khi tin vào gap AI gợi ý.
 
-4. **Kết quả:** Sau một phiên khám phá ban đầu, Minh không còn đọc lan man toàn bộ field mà đã có một **candidate gap** đủ cụ thể để mang đi đọc sâu, kiểm chứng với paper gốc, và trao đổi tiếp với người hướng dẫn.
+4. **Kết quả:** Sau một phiên khám phá có tool hỗ trợ, Minh không chỉ có một ý tưởng nghe hay, mà có:
+   - một candidate gap;
+   - một danh sách nguồn gốc cần đọc sâu;
+   - và một research note đủ rõ để đem trao đổi với GVHD.
 
 ### 📊 Case Study Xã Hội: Nghiên cứu sinh Giáo dục
 
@@ -333,26 +358,30 @@ Phase 5: COMMUNICATE (Truyền thông)
 
 **Phiên làm việc với Antigravity:**
 
-1. **Perplexity Research:** "Barriers to STEM education implementation in developing countries"
-   → Nhận framework 4 nhóm rào cản: Policy, Teacher, Resource, Cultural
+1. **Dùng academic search + web reasoning** để quét literature về rào cản triển khai STEM ở các nước đang phát triển.
+   → Agent trả về nhóm nguồn, chứ không chỉ một đoạn overview.
 
-2. **Consensus:** Tìm "STEM education barriers Southeast Asia", filter: qualitative studies
-   → Tìm 8 nghiên cứu định tính từ Thailand, Malaysia, Philippines, Indonesia
+2. **Dùng notebook/knowledge tool** để nhóm các nguồn theo `policy / teacher / resource / culture`.
+   → Hương nhìn ra theme nào đã bão hòa, theme nào còn thiếu context Việt Nam.
 
-3. **NotebookLM:** Tạo notebook, add 8 papers → Query: "What are common themes across these studies?"
-   → Phát hiện: Thiếu nghiên cứu cụ thể về context Việt Nam
+3. **Dùng reasoning tool** để so sánh vài hướng thiết kế định tính khác nhau.
+   → Kết quả không phải "AI chọn hộ phương pháp", mà là một bảng trade-off giữa phenomenology, case study và qualitative descriptive approach.
 
-4. **Sequential Thinking:** Phân tích → Quyết định dùng phenomenological approach vì muốn hiểu "trải nghiệm sống" của giáo viên
+4. **Tạo artifact thật**:
+   - problem note;
+   - bảng tension trong literature;
+   - draft research questions;
+   - danh sách paper gốc phải đọc lại.
 
-5. **Kết quả:** Sau một vài phiên làm việc có kiểm chứng, Hương hình thành được **khung vấn đề sơ bộ**, bộ câu hỏi nghiên cứu ban đầu, và danh sách tài liệu lõi để bước sang `Chương 3` và `Chương 4` một cách có định hướng hơn.
+5. **Kết quả:** Sau vài phiên làm việc có dùng tool đúng chỗ, Hương không chỉ "hiểu hơn", mà đã có bộ nền đủ chắc để bước sang `Chương 3` và `Chương 4`.
 
 ---
 
 ## 2.7 Bài Tập Thực Hành
 
-### 🔧 Hands-on 2.1: Viết prompt theo mô hình RCTFC
+### 🔧 Hands-on 2.1: Viết brief theo mô hình RCTFC
 
-Chọn 3 tasks dưới đây và viết prompt đầy đủ (Role, Context, Task, Format, Constraint):
+Chọn 3 tasks dưới đây và viết brief đầy đủ (Role, Context, Task, Format, Constraint), rồi bổ sung thêm `tools`, `verification`, và `artifacts`:
 1. Tìm literature review về chủ đề nghiên cứu của bạn
 2. Phân tích một research gap
 3. So sánh hai phương pháp nghiên cứu
@@ -361,7 +390,7 @@ Chọn 3 tasks dưới đây và viết prompt đầy đủ (Role, Context, Task
 
 1. Yêu cầu Antigravity tìm 5 bài báo về chủ đề của bạn
 2. Kiểm chứng từng bài: Tên bài, tác giả, năm, tạp chí có đúng không?
-3. Ghi nhận kết quả vào research log
+3. Ghi nhận kết quả vào `ai-use-log.md`
 
 ### 🔧 Hands-on 2.3: Devil's Advocate
 
@@ -375,12 +404,13 @@ Chọn 3 tasks dưới đây và viết prompt đầy đủ (Role, Context, Task
 
 Khi kết thúc chương này, bạn nên có trong tay:
 
-- Một bộ `3-5` prompt lõi viết theo khung `RCTFC` cho đúng chủ đề nghiên cứu của mình
+- Một bộ `3-5` brief lõi viết theo khung `RCTFC`, nhưng đã nói rõ cả `tools`, `verification`, và `artifacts`
 - Một quy trình `triple-check` đủ cụ thể để áp dụng cho mọi claim quan trọng
-- Một mẫu `AI usage record` để ghi lại prompt, output, kiểm chứng và phần chỉnh sửa bởi con người
+- Một mẫu `AI usage record` để ghi lại prompt/brief, tool đã dùng, output, kiểm chứng và phần chỉnh sửa bởi con người
+- Một bản đồ sơ bộ về việc nào trong dự án của bạn nên giao cho agent, việc nào phải giữ cho con người quyết định
 - Một danh sách thiên kiến mà dự án của bạn dễ vấp phải, cùng cách chủ động phản biện chúng
 
-Nếu bốn thứ này đã có, bạn đã sẵn sàng đi vào `Chương 3` không chỉ với sự tò mò, mà với một cách làm đủ chặt để biến tò mò thành vấn đề nghiên cứu có giá trị. Đây chính là bộ nền giúp bạn bước vào giai đoạn xác định vấn đề mà không bị cuốn theo những output nghe thông minh nhưng chưa được kiểm chứng.
+Nếu các thứ này đã có, bạn đã sẵn sàng đi vào `Chương 3` không chỉ với sự tò mò, mà với một cách làm đủ chặt để biến tò mò thành vấn đề nghiên cứu có giá trị. Đây chính là bộ nền giúp bạn dùng AI agent như một người điều phối công cụ phục vụ học thuật, thay vì như một cỗ máy trả lời nghe thông minh nhưng không để lại workflow đáng tin.
 
 ---
 

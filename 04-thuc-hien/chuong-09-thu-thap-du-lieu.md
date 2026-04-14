@@ -250,6 +250,58 @@ Ví dụ data dictionary tối thiểu:
 | `burnout_score` | Điểm burnout tổng | numeric | 0-54 | tính từ 9 items |
 | `interview_id` | Mã phỏng vấn | text | P01, P02... | không dùng tên thật |
 
+### Vì sao dữ liệu nghiên cứu thường được lưu bằng file `CSV`?
+
+Trong rất nhiều dự án nghiên cứu, đặc biệt là nghiên cứu định lượng hoặc các workflow có dữ liệu dạng bảng, bạn sẽ thấy dữ liệu được lưu dưới dạng `CSV`.
+
+`CSV` là viết tắt của **Comma-Separated Values**. Đây là một định dạng văn bản rất đơn giản để lưu dữ liệu theo hàng và cột:
+
+- mỗi **hàng** thường là một quan sát, một người tham gia, một phiên đo, hoặc một đơn vị phân tích;
+- mỗi **cột** thường là một biến, một thuộc tính, hoặc một trường dữ liệu;
+- các giá trị được ngăn cách với nhau bằng dấu phân tách, thường là dấu phẩy, nhưng trong một số môi trường có thể là dấu chấm phẩy.
+
+Ví dụ rất đơn giản:
+
+```csv
+participant_id,school_type,pre_score,post_score
+P01,public,6.5,7.8
+P02,private,7.0,7.4
+P03,public,5.8,6.9
+```
+
+Điều quan trọng cần nói rõ là: `CSV` **không phải bản thân phương pháp thu thập dữ liệu**. Bạn không "đi thu dữ liệu bằng CSV". Thay vào đó, `CSV` thường là định dạng để:
+
+- lưu dữ liệu khảo sát sau khi export từ Google Forms, Qualtrics, KoboToolbox hoặc các hệ survey khác;
+- lưu bảng dữ liệu quan sát, log hành vi, hay dữ liệu thứ cấp tải về từ cổng dữ liệu mở;
+- lưu bản `cleaned dataset` sau khi bạn đã chuẩn hóa biến, xử lý missing values, và tách dữ liệu nhạy cảm;
+- trao đổi dữ liệu giữa nhiều công cụ phân tích khác nhau.
+
+`CSV` được dùng rất nhiều trong nghiên cứu vì ít nhất 5 lý do:
+
+1. **Đơn giản và bền**  
+   Đây là plain text, không phụ thuộc mạnh vào một phần mềm độc quyền cụ thể. Nếu mở bằng Excel được, thường cũng có thể đọc bằng R, Python, SPSS, Stata, hoặc import vào SQL.
+
+2. **Dễ trao đổi giữa các công cụ**  
+   Cùng một bộ dữ liệu có thể được thu trong form online, làm sạch trong spreadsheet, phân tích bằng Python/R, rồi kiểm tra lại bằng phần mềm thống kê khác.
+
+3. **Dễ kiểm tra và truy vết**  
+   Vì cấu trúc của nó thẳng và rõ, bạn dễ nhìn ra tên biến, số dòng, giá trị missing, lỗi mã hóa, hoặc sự lẫn lộn giữa text và numeric.
+
+4. **Phù hợp với dữ liệu dạng bảng**  
+   Nhiều dataset nghiên cứu thực chất là bảng: người tham gia x biến số, trường học x chỉ số, quốc gia x năm, bài báo x thuộc tính. `CSV` rất hợp cho kiểu dữ liệu này.
+
+5. **Nhẹ và dễ versioning hơn file spreadsheet phức tạp**  
+   So với file `.xlsx` có nhiều sheet, format, màu, công thức, thì `CSV` gọn hơn và dễ đưa vào workflow tái lập hơn, nhất là khi cần script xử lý dữ liệu.
+
+Tuy vậy, `CSV` không phải lúc nào cũng là lựa chọn tốt nhất. Nó **không phù hợp** nếu:
+
+- bạn cần giữ nhiều sheet, công thức, format trình bày;
+- dữ liệu là audio, video, ảnh, PDF, hoặc transcript dài;
+- bạn cần lưu cấu trúc quan hệ phức tạp giữa nhiều bảng mà chưa thiết kế rõ khóa nối;
+- bạn cần lưu cả metadata phong phú mà chỉ một bảng phẳng không đủ chứa.
+
+Vì vậy, cách hiểu đúng là: với dữ liệu nghiên cứu dạng bảng, `CSV` thường là một **định dạng nền rất thực dụng** để lưu, kiểm tra, làm sạch, và chuyển dữ liệu sang bước phân tích. Nó giúp workflow rõ hơn, nhưng vẫn cần đi cùng `data dictionary`, metadata, và quy tắc tách `raw / anonymized / processed`.
+
 ### Prompt thiết kế data governance tối thiểu
 
 > 📋 **Prompt Template — Data Governance Starter**

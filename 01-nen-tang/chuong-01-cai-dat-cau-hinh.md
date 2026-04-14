@@ -324,31 +324,137 @@ Ví dụ:
 - thư mục nào đã ẩn danh
 - connector nào được phép dùng với loại dữ liệu nào
 
-## 1.8 Phân Vai Đội Ngũ AI: Lựa Chọn Giữa Gemini 3.1 Pro và Claude Opus
+## 1.8 Phân Vai Model Và Tool Theo Kiểu Việc, Không Theo Tên Gọi
 
-Trang bị công cụ tốt không bằng dùng đúng công cụ cho đúng việc. Trong hệ sinh thái Antigravity, bạn có thiết lập mặc định với hai mô hình tư duy (models) hàng đầu hiện nay, mỗi bên có một triết lý thiết kế và điểm mạnh riêng. Việc phân vai chúng đúng cách sẽ quyết định độ sâu và tốc độ nghiên cứu của bạn.
+Một sai lầm rất hay gặp là hỏi: "Model nào mạnh nhất?" Câu hỏi hữu ích hơn trong nghiên cứu là: **với việc này, tôi cần kiểu model nào và cần tool nào đi kèm?**
 
-### Gemini 3.1 Pro: "Người Tổng Hợp" Nhanh Nhẹn Và Chịu Tải Cao
-Được thiết kế với window context khổng lồ (thích dung nạp hàng triệu tokens) và tốc độ suy luận nhanh.
-- **Điểm mạnh cốt lõi:** Khả năng đọc đồng thời hàng chục bài báo (PDF) mà không mất bối cảnh, cross-check dữ liệu thần tốc, và trích xuất thông tin diện rộng.
-- **Khâu khuyên dùng:** 
-  - Literature Review giai đoạn mở rộng (đọc lướt hàng nghìn trang).
-  - Thực thi Code/Data pipeline, gọi công cụ qua MCP chuẩn xác.
-  - Trích xuất dữ liệu, tổng hợp thông tin, chuyển đổi format.
+Tên model có thể thay đổi rất nhanh. Nhưng các kiểu việc nghiên cứu thì khá ổn định. Thực dụng nhất là phân vai theo 3 nhóm sau:
 
-### Claude Opus: "Nhà Lý Luận" Cẩn Trọng Và Sâu Sắc
-Được thiết kế với văn phong tự nhiên, sự cẩn trọng cao độ và khả năng suy luận logic nhiều lớp (chain-of-thought) vững chắc.
-- **Điểm mạnh cốt lõi:** Viết lách học thuật sắc bén, khả năng phát hiện điểm mù mâu thuẫn trong logic, và xử lý các concept lý thuyết phức tạp.
-- **Khâu khuyên dùng:**
-  - Chốt Research Gap và thiết kế Framework (Research Design).
-  - Biên tập, làm mịn và nâng cấp bản thảo (Drafting & Refining).
-  - Thảo luận sâu, phản biện giả thuyết (Bias Check).
+### 1. Model thiên về xử lý khối lượng và dùng tool tốt
 
-**Tóm lại:** Hãy để **Gemini 3.1 Pro** "cày" khối lượng tài liệu khổng lồ để lấy ra quặng thô, rồi đưa quặng đó cho **Claude Opus** tinh chế và lập luận thành tác phẩm học thuật hoàn chỉnh.
+Loại này hợp khi bạn cần:
+
+- đọc và trích xuất trên nhiều tài liệu;
+- làm việc với file, thư mục, bảng dữ liệu;
+- chạy code hoặc tạo script;
+- gọi connector/search/tool nhiều bước theo workflow.
+
+Đây thường là lựa chọn hợp lý cho:
+
+- literature scan diện rộng;
+- dựng literature matrix ban đầu;
+- làm sạch dữ liệu;
+- chuyển logic phân tích sang Python/R/SPSS/Stata;
+- tạo figure, table, hay artifacts kỹ thuật.
+
+### 2. Model thiên về lập luận, phản biện và biên tập
+
+Loại này hợp khi bạn cần:
+
+- so khớp problem statement với theory;
+- stress-test framework;
+- biên tập bản thảo;
+- chỉ ra chỗ lập luận yếu, chỗ claim quá đà;
+- viết lại đoạn văn học thuật chặt hơn.
+
+Đây thường là lựa chọn hợp lý cho:
+
+- chốt research gap;
+- phản biện design logic;
+- đọc và sửa Discussion;
+- luyện câu trả lời cho GVHD hoặc reviewer.
+
+### 3. Model/agent thiên về điều phối workflow
+
+Trong nhiều phiên làm việc, điều bạn cần không phải "một model thông minh nhất", mà là một agent biết:
+
+- khi nào phải tìm nguồn;
+- khi nào phải đọc file thật;
+- khi nào phải chạy code;
+- khi nào phải dừng để hỏi lại;
+- khi nào phải ghi log và tạo artifact cho phiên sau.
+
+Đó là lý do trong ebook này, trọng tâm không phải là chọn một model để làm tất cả. Trọng tâm là ghép:
+
+- **đúng kiểu model**
+- với **đúng tool**
+- cho **đúng giai đoạn nghiên cứu**
+
+### Quy tắc thực dụng để chọn
+
+- Nếu việc chính là **đọc nhiều, trích xuất nhiều, dùng tool nhiều**, ưu tiên model/agent mạnh về thao tác và điều phối tool.
+- Nếu việc chính là **lập luận, viết lại, phản biện, giữ độ chặt của học thuật**, ưu tiên model cẩn trọng và sắc về biên tập.
+- Nếu một phiên làm việc vừa cần tool vừa cần lập luận sâu, hãy tách thành hai lượt: một lượt để lấy quặng thô và artifact, một lượt để phản biện và tinh luyện.
+
+**Tóm lại:** Đừng hỏi "model nào thắng". Hãy hỏi: **ở bước này của nghiên cứu, tôi cần đọc, chạy, kiểm, hay viết; và model nào hỗ trợ tốt nhất cho việc đó?**
 
 ## 1.9 Cấu Hình Connector - Sức Mạnh Thực Sự Của MCP (Model Context Protocol)
 
 Phần mạnh nhất của Antigravity là khả năng kết nối nhiều hệ thống bên ngoài qua chuẩn MCP (Model Context Protocol). MCP giống như đóng vai "tay" và "mắt" giúp LLM thoát khỏi hộp chat đóng kín. Thay vì bạn phải tự mở trình duyệt, LLM có thể trực tiếp query web, đọc folder của hệ thống, gọi Perplexity hay Consensus. Nhưng cấu hình connector nên đi theo nguyên tắc **ít nhưng đúng**, không phải càng nhiều càng tốt.
+
+### Sơ Đồ Hệ Sinh Thái MCP Cho Nghiên Cứu
+
+Trước khi đi vào từng connector, hãy nhìn tổng thể cách các thành phần kết nối với nhau. Sơ đồ dưới đây minh họa kiến trúc MCP thực tế được sử dụng xuyên suốt cuốn sách:
+
+```mermaid
+graph TB
+    subgraph CORE["🧠 ANTIGRAVITY CORE"]
+        LLM["AI Engine<br/>Gemini / Claude"]
+        FS["Built-in Tools<br/>Filesystem · Terminal · Browser"]
+    end
+
+    subgraph MCP_SEARCH["🔍 Tìm Kiếm & Tri Thức"]
+        PERP["Perplexity MCP<br/>Web search · Reasoning · Deep Research"]
+        CONS["Consensus MCP<br/>200M+ bài báo học thuật"]
+    end
+
+    subgraph MCP_KNOWLEDGE["📚 Quản Lý Tri Thức"]
+        NLM["NotebookLM MCP<br/>Notebook · Sources · Audio Overview"]
+    end
+
+    subgraph MCP_DOCUMENT["📄 Xử Lý Tài Liệu"]
+        OCR["Smart PDF OCR<br/>Tesseract · Vision AI · Smart Routing"]
+    end
+
+    subgraph MCP_REASONING["🧩 Phân Tích & Suy Luận"]
+        SEQ["Sequential Thinking<br/>Chain-of-thought · Multi-step reasoning"]
+    end
+
+    subgraph MCP_BROWSER["🌐 Tương Tác Web"]
+        PW["Playwright MCP<br/>Browser automation · Screenshot · Forms"]
+    end
+
+    subgraph MCP_AUTOMATION["⚙️ Tự Động Hóa"]
+        N8N["n8n MCP<br/>Workflow automation · Webhook · Scheduling"]
+    end
+
+    LLM <--> FS
+    LLM <-->|"search · ask · reason · research"| PERP
+    LLM <-->|"query 200M+ papers"| CONS
+    LLM <-->|"create · query · studio"| NLM
+    LLM <-->|"submit · analyze · download"| OCR
+    LLM <-->|"think · branch · revise"| SEQ
+    LLM <-->|"navigate · click · snapshot"| PW
+    LLM <-->|"create · execute workflows"| N8N
+
+    classDef core fill:#1a1a2e,stroke:#e94560,stroke-width:2px,color:#fff
+    classDef search fill:#16213e,stroke:#0f3460,stroke-width:1px,color:#fff
+    classDef knowledge fill:#1a3c34,stroke:#2d6a4f,stroke-width:1px,color:#fff
+    classDef document fill:#2d1b3d,stroke:#7b2d8e,stroke-width:1px,color:#fff
+    classDef reasoning fill:#3d2b1a,stroke:#c77d3a,stroke-width:1px,color:#fff
+    classDef browser fill:#1a2d3d,stroke:#3a7bc7,stroke-width:1px,color:#fff
+    classDef automation fill:#3d1a2b,stroke:#c73a5e,stroke-width:1px,color:#fff
+
+    class LLM,FS core
+    class PERP,CONS search
+    class NLM knowledge
+    class OCR document
+    class SEQ reasoning
+    class PW browser
+    class N8N automation
+```
+
+**Cách đọc sơ đồ:** AI Engine (trung tâm) giao tiếp với 7 nhóm MCP server qua giao thức chuẩn. Mỗi mũi tên hai chiều là một kênh gửi-nhận dữ liệu. Bạn không cần cài tất cả — hãy chọn những gì phục vụ đúng nhu cầu nghiên cứu của mình (xem bảng dưới).
 
 ### Bộ connector cốt lõi cho cuốn sách này
 

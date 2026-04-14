@@ -20,16 +20,24 @@ Và quả thật, có.
 
 ## Antigravity Là Gì?
 
-Antigravity không phải là một phần mềm đơn lẻ. Nó là một **hệ sinh thái trí tuệ nhân tạo** được thiết kế để khuếch đại năng lực của nhà nghiên cứu. Hãy hình dung bạn có:
+Antigravity không nên được hiểu như một chatbot “hỏi gì đáp nấy”, cũng không chỉ là một danh sách tool ghép lại. Trong cuốn sách này, hãy hiểu nó như một **AI workspace cho nghiên cứu**: một agent có thể làm việc với file, dùng tool, gọi connector, chạy code, đọc tài liệu, và hỗ trợ bạn giữ cả workflow học thuật trong một nơi.
 
-- Một **thủ thư** có thể tìm kiếm trên hơn 200 triệu bài báo học thuật trong vài giây (Consensus)
-- Một **trợ lý nghiên cứu** sẵn sàng lục soát toàn bộ Internet để trả lời câu hỏi của bạn (Perplexity)
-- Một **quản lý tri thức** giúp bạn tổ chức, tổng hợp, và thậm chí biến tài liệu thành podcast (NotebookLM)
-- Một **kỹ thuật viên** có thể số hóa bất kỳ tài liệu giấy nào thành văn bản (Smart PDF OCR)
-- Một **nhà phân tích dữ liệu** sẵn sàng chạy mọi phép thống kê, vẽ mọi biểu đồ (Code Execution)
-- Một **nhà tư duy** giúp bạn phân tích vấn đề phức tạp theo từng bước logic (Sequential Thinking)
+Nói thực dụng hơn, Antigravity hữu ích vì nó giúp bạn phối hợp các loại công cụ rất hay gặp trong nghiên cứu:
 
-Tất cả những "đồng nghiệp" này được tích hợp trong một giao diện duy nhất, sẵn sàng phục vụ bạn 24/7, không bao giờ mệt mỏi, và không bao giờ phàn nàn khi bạn thay đổi hướng nghiên cứu lần thứ mười bảy.
+- công cụ tìm kiếm học thuật để tìm, đối chiếu và truy nguồn bài báo;
+- công cụ web/reasoning để quét bối cảnh, grey literature và stress-test lập luận;
+- công cụ notebook hoặc knowledge workspace để gom notes, theme và synthesis;
+- công cụ OCR/PDF để số hóa tài liệu scan hoặc tài liệu tiếng Việt khó đọc;
+- công cụ code/data để làm sạch dữ liệu, chạy phân tích, tạo bảng và figure;
+- công cụ file/terminal để lưu vết, tổ chức project và tạo output có thể chạy lại.
+
+Điểm quan trọng không phải là bạn có bao nhiêu tool. Điểm quan trọng là agent có biết **dùng đúng tool cho đúng việc học thuật** hay không. Một workflow tốt không bắt đầu bằng “hãy viết cho tôi câu trả lời”, mà bắt đầu bằng:
+
+- tìm đúng nguồn;
+- đọc đúng file;
+- chạy đúng thao tác;
+- lưu đúng output;
+- rồi mới tóm tắt, so sánh, phản biện và viết.
 
 ---
 
@@ -72,7 +80,7 @@ Cuốn sách được tổ chức theo **quy trình nghiên cứu tự nhiên** 
 - Đang viết bài báo? → **Chương 13**
 
 ### 🛠️ Đọc như sách tham khảo
-Phụ lục chứa hàng chục prompt templates, checklists, và case studies mà bạn có thể copy-paste trực tiếp vào Antigravity.
+Phụ lục chứa prompt frameworks, checklists, templates, và case studies để bạn thích nghi theo dự án thật. Chúng không nhằm biến bạn thành người “chép prompt”, mà giúp bạn đặt đúng việc cho agent và đúng công cụ cho workflow nghiên cứu.
 
 ---
 
@@ -90,13 +98,13 @@ Xuyên suốt cuốn sách, bạn sẽ gặp các ký hiệu sau:
 
 > 🔧 **Hands-on:** Bài tập thực hành bạn có thể làm ngay trên Antigravity.
 
-> 📋 **Prompt Template:** Mẫu câu lệnh bạn có thể sao chép và sử dụng trực tiếp.
+> 📋 **Prompt Template:** Mẫu khởi động để bạn giao việc cho agent. Luôn cần chỉnh theo bối cảnh, dữ liệu, tool và mức kiểm chứng của dự án thật.
 
 ---
 
 ## Lời Cảm Ơn
 
-Cuốn sách này — một cách đầy tính meta — được viết với sự hỗ trợ của chính Antigravity. Mỗi chương là một minh chứng sống cho phương pháp được trình bày bên trong. Tổng quan tài liệu ở Chương 0 được thực hiện bằng Consensus và Perplexity. Cấu trúc lập luận được kiểm tra bằng Sequential Thinking. Những case studies được xây dựng từ các nghiên cứu thực tế.
+Cuốn sách này được viết với sự hỗ trợ của chính Antigravity, nhưng không theo kiểu “AI viết hộ”. Trong quá trình biên soạn, AI được dùng đúng vai trò mà cuốn sách cổ vũ: tìm nguồn, đối chiếu cấu trúc, stress-test logic, hỗ trợ biên tập, và giúp giữ workflow có thể truy lại. Phần quyết định học thuật, kiểm chứng cuối cùng và trách nhiệm nội dung vẫn thuộc về con người.
 
 Tôi viết cuốn sách này với hy vọng rằng nó sẽ giúp các nhà nghiên cứu Việt Nam — đặc biệt những người đang phải làm việc với nguồn lực hạn chế — có thêm một đồng minh mạnh mẽ trong hành trình khám phá tri thức.
 

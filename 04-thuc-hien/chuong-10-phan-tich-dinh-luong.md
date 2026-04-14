@@ -288,6 +288,166 @@ plt.tight_layout()
 plt.savefig("results/figures/distribution-checks.png", dpi=300)
 ```
 
+### Vì sao phân tích dữ liệu nghiên cứu thường hay dùng Python?
+
+Trong khoảng 10 năm gần đây, `Python` xuất hiện ngày càng nhiều trong workflow phân tích dữ liệu nghiên cứu. Điều này không có nghĩa là mọi nhà nghiên cứu đều phải dùng Python, và cũng không có nghĩa Python luôn tốt hơn `R`, `SPSS`, hay `Stata`. Nhưng nó phổ biến vì một số lý do rất thực dụng:
+
+1. **Đọc và xử lý dữ liệu dạng bảng rất thuận**  
+   Với `pandas`, bạn có thể đọc `CSV`, làm sạch dữ liệu, recode biến, gộp bảng, lọc mẫu, và tạo biến mới trong cùng một luồng làm việc.
+
+2. **Một môi trường có thể làm được nhiều việc liên tiếp**  
+   Cùng một script có thể:
+   - nhập dữ liệu;
+   - làm sạch;
+   - chạy thống kê;
+   - vẽ figure;
+   - và xuất kết quả ra file.
+
+3. **Phù hợp với workflow tái lập**  
+   Thay vì click từng bước rồi quên mình đã làm gì, bạn giữ lại toàn bộ quy trình dưới dạng script. Điều này rất hữu ích khi cần chạy lại phân tích, sửa dữ liệu, hoặc giải thích phương pháp cho GVHD và reviewer.
+
+4. **Kết nối tốt với dữ liệu từ nhiều nguồn**  
+   Python hợp với dữ liệu từ khảo sát, log hệ thống, dữ liệu web, API, file `CSV`, Excel, cơ sở dữ liệu, thậm chí kết hợp với OCR hoặc scraping ở các bước trước đó.
+
+5. **Hệ sinh thái thư viện rất rộng**  
+   `pandas`, `numpy`, `scipy`, `statsmodels`, `scikit-learn`, `matplotlib`, `seaborn`... đủ mạnh để đáp ứng phần lớn nhu cầu phân tích định lượng ứng dụng.
+
+6. **AI hỗ trợ viết và giải thích code Python khá tốt**  
+   Đây là một lý do rất thực tế. Với mô tả phân tích đủ rõ, AI thường có thể draft nhanh code Python ở mức dùng được, giúp người nghiên cứu rút ngắn thời gian từ `analysis plan` sang `script đầu tiên`.
+
+Điều quan trọng là: người nghiên cứu không cần trung thành tuyệt đối với Python. Nếu khoa của bạn quen `SPSS`, nhóm nghiên cứu của bạn dùng `R`, hoặc field của bạn quen `Stata`, bạn hoàn toàn có thể đi theo những công cụ đó. Thứ cần giữ ổn định không phải tên phần mềm, mà là **logic phân tích**.
+
+### AI có thể giúp chuyển từ analysis plan sang script như thế nào?
+
+Đây là một trong những chỗ AI hữu ích nhất với người học nghiên cứu:
+
+- bạn mô tả `research question`, biến, loại mô hình, và các giả định cần kiểm tra;
+- AI draft một script đầu tiên bằng Python;
+- sau đó AI có thể giúp **dịch cùng logic đó** sang `R`, `SPSS syntax`, hoặc `Stata do-file`.
+
+Cách dùng đúng ở đây là: xem AI như một **lớp chuyển ngữ giữa logic phương pháp và cú pháp công cụ**.
+
+Điều AI có thể hỗ trợ tốt:
+
+- viết skeleton script ban đầu;
+- chuyển cùng một phân tích sang nhiều môi trường phần mềm;
+- thêm comment để bạn hiểu từng bước đang làm gì;
+- chỉ ra chỗ nào cần đổi nếu biến là categorical, ordinal, repeated measures, hay clustered data.
+
+Điều AI không nên được phép quyết định thay bạn:
+
+- tên biến nào thực sự đúng trong dataset;
+- dữ liệu đã được recode đúng chưa;
+- missing values đang mang ý nghĩa gì;
+- mô hình nào là lựa chọn tốt nhất về mặt phương pháp;
+- và kết luận nào là hợp lý từ output.
+
+### Ví dụ minh họa: một bài toán, bốn môi trường
+
+Giả sử bạn có file `survey_data.csv` và muốn kiểm tra:
+
+- `post_score` là biến phụ thuộc;
+- `pre_score` là covariate liên tục;
+- `group_code` là nhóm can thiệp/đối chứng;
+- `gender_code` là biến kiểm soát.
+
+Mục tiêu là chạy một mô hình để xem `group_code` còn dự đoán `post_score` sau khi đã kiểm soát `pre_score` hay không.
+
+#### Python
+
+```python
+import pandas as pd
+import statsmodels.formula.api as smf
+
+df = pd.read_csv("data/processed/survey_data.csv")
+
+model = smf.ols(
+    "post_score ~ pre_score + C(group_code) + C(gender_code)",
+    data=df
+).fit()
+
+print(model.summary())
+```
+
+#### R
+
+```r
+df <- read.csv("data/processed/survey_data.csv")
+
+model <- lm(
+  post_score ~ pre_score + factor(group_code) + factor(gender_code),
+  data = df
+)
+
+summary(model)
+```
+
+#### SPSS Syntax
+
+```spss
+GET DATA
+  /TYPE=TXT
+  /FILE='data/processed/survey_data.csv'
+  /DELCASE=LINE
+  /DELIMITERS=","
+  /ARRANGEMENT=DELIMITED
+  /FIRSTCASE=2.
+
+UNIANOVA post_score BY group_code gender_code WITH pre_score
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /PRINT=DESCRIPTIVE PARAMETER ETASQ
+  /DESIGN=pre_score group_code gender_code.
+```
+
+#### Stata
+
+```stata
+import delimited "data/processed/survey_data.csv", clear
+reg post_score c.pre_score i.group_code i.gender_code
+```
+
+Điều đáng chú ý ở đây là: cú pháp khác nhau, nhưng **logic phân tích là cùng một logic**:
+
+- nhập dữ liệu;
+- xác định biến phụ thuộc, biến liên tục, biến phân loại;
+- khai báo đúng vai trò của biến;
+- chạy mô hình;
+- rồi đọc kết quả theo cùng một câu hỏi nghiên cứu.
+
+Nếu bạn mô tả logic đủ rõ, AI có thể giúp bạn đi từ:
+
+`analysis plan -> Python script -> R script -> SPSS syntax -> Stata do-file`
+
+mà không phải bắt đầu lại từ đầu ở từng phần mềm.
+
+### Prompt để nhờ AI chuyển logic phân tích sang công cụ khác
+
+> 📋 **Prompt Template — Translate Analysis Across Tools**
+> ```
+> Tôi có phân tích định lượng với thông tin sau:
+> - Research question: [question]
+> - Dependent variable: [DV]
+> - Independent variables / covariates: [list]
+> - Variable types: [continuous / categorical / ordinal]
+> - Dataset path: [path]
+> - Desired model/test: [model]
+> 
+> Hãy giúp tôi:
+> 1. Viết script Python có comment ngắn
+> 2. Viết phiên bản tương đương bằng R
+> 3. Viết SPSS syntax tương đương
+> 4. Viết Stata syntax tương đương
+> 5. Chỉ ra chỗ nào cần điều chỉnh nếu biến phân loại đang được mã hóa khác
+> 6. Nêu 3 điểm tôi bắt buộc phải kiểm tra tay trước khi chạy
+> ```
+
+Khi dùng prompt kiểu này, bạn sẽ thấy AI hữu ích nhất không phải ở chỗ “biết nhiều cú pháp”, mà ở chỗ nó giúp bạn nhận ra:
+
+- đâu là phần cốt lõi của logic phân tích;
+- đâu là phần chỉ khác nhau do ngôn ngữ phần mềm;
+- và đâu là những giả định phương pháp vẫn phải do con người tự kiểm.
+
 ### Một lỗi hay gặp
 
 Thấy Shapiro-Wilk p < .05 là lập tức kết luận “không được dùng parametric tests”. Điều này quá máy móc. Với mẫu lớn, kiểm định normality rất nhạy. Bạn cần xem thêm:
