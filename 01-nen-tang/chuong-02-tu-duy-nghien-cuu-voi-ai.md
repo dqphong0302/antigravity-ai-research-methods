@@ -9,9 +9,7 @@
 
 ---
 
-Nếu `Chương 1` giúp bạn dựng **workspace nghiên cứu**, thì chương này giúp bạn dựng **kỷ luật nghiên cứu** bên trong workspace đó. Khác biệt giữa việc "hỏi AI cho nhanh" và việc thực sự dùng AI như một trợ lý nghiên cứu nằm ở bốn năng lực: hỏi có bối cảnh, kiểm chứng có hệ thống, ghi nhận có dấu vết, và phản biện lại chính trực giác của mình.
-
-Chương này vì thế đóng vai trò chiếc cầu nối giữa phần setup và phần khám phá học thuật ở `Chương 3`. Mục tiêu không phải để bạn tạo ra những output trông ấn tượng ngay lập tức, mà để bạn bước vào giai đoạn xác định vấn đề nghiên cứu với một cách làm **có thể truy vết, có thể kiểm chứng, và đủ tỉnh táo trước thiên kiến của AI**.
+Chương này dạy bạn 4 kỹ năng cốt lõi khi dùng AI agent cho nghiên cứu: **(1)** giao việc có bối cảnh thay vì hỏi chung chung, **(2)** kiểm chứng output có hệ thống, **(3)** ghi nhận dấu vết để truy nguồn, **(4)** phản biện lại chính AI. Đọc xong chương này, bạn sẽ biết viết brief giao việc theo khung RCTFC, phân biệt 5 kiểu việc nên giao cho agent, và thiết lập quy trình kiểm chứng trước khi dùng bất kỳ output AI nào vào bài nghiên cứu.
 
 ## 2.1 Dùng AI Agent Cho Nghiên Cứu: Đừng Chỉ Prompt, Hãy Giao Việc
 

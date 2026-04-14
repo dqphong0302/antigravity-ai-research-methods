@@ -8,27 +8,7 @@
 
 ---
 
-Nhiều người bước vào giai đoạn phân tích định lượng với một cảm giác khá giống nhau: dữ liệu đã có rồi, bây giờ chỉ cần “chạy thống kê”. Chính cách nghĩ này là nguồn gốc của rất nhiều sai lầm. Phân tích định lượng không phải là chuỗi thao tác phần mềm, cũng không phải trò chọn phép kiểm nào “ra p-value đẹp hơn”. Nó là quá trình biến câu hỏi nghiên cứu thành bằng chứng có thể kiểm tra được, rồi diễn giải bằng chứng đó một cách trung thực.
-
-Vì vậy, chương này không đi theo hướng “học thuộc tên các test”. Câu hỏi trung tâm ở đây là:
-
-**với loại câu hỏi nghiên cứu này, kiểu dữ liệu này, và giới hạn thiết kế này, đâu là cách phân tích hợp lý nhất để đưa ra kết luận vừa đúng vừa có trách nhiệm?**
-
-Antigravity có thể giúp bạn rất nhiều trong giai đoạn này. Bạn có thể:
-
-- làm sạch dữ liệu;
-- chạy thống kê mô tả và suy luận;
-- kiểm tra giả định;
-- tạo bảng và figure reproducible;
-- soạn đoạn báo cáo theo chuẩn học thuật;
-- rà logic diễn giải và so sánh với literature.
-
-Nhưng AI và code chỉ làm cho bạn nhanh hơn. Chúng không thay thế được các quyết định cốt lõi:
-
-- biến nào là trọng tâm;
-- phép phân tích nào thật sự phù hợp;
-- kết quả nào đáng nhấn mạnh;
-- và quan trọng nhất, điều gì **chưa thể kết luận** từ dữ liệu hiện có.
+Chương này hướng dẫn bạn chạy phân tích định lượng từ đầu đến cuối: audit data → descriptive → assumption check → inferential test/model → effect size → reporting. Code minh họa bằng **Python, R, SPSS, Stata** (cùng một logic, 4 cú pháp). AI giúp bạn draft script, kiểm tra assumptions, và soạn đoạn Results — nhưng quyết định mô hình nào phù hợp với câu hỏi và dữ liệu vẫn là của bạn.
 
 Chương này được đọc tốt nhất khi bạn đã có từ `Chương 6` một thiết kế định lượng đủ rõ, và từ `Chương 9` một bộ dữ liệu đã được tổ chức, làm sạch ở mức cơ bản, và ghi log đủ để truy nguồn. Khi đó, phân tích không còn là bước “mò trong dataset”, mà là bước kiểm tra xem bằng chứng thực tế có đang trả lời đúng câu hỏi bạn đã thiết kế từ đầu hay không.
 

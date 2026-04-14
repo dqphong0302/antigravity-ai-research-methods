@@ -22,14 +22,14 @@ Và quả thật, có.
 
 Antigravity không nên được hiểu như một chatbot “hỏi gì đáp nấy”, cũng không chỉ là một danh sách tool ghép lại. Trong cuốn sách này, hãy hiểu nó như một **AI workspace cho nghiên cứu**: một agent có thể làm việc với file, dùng tool, gọi connector, chạy code, đọc tài liệu, và hỗ trợ bạn giữ cả workflow học thuật trong một nơi.
 
-Nói thực dụng hơn, Antigravity hữu ích vì nó giúp bạn phối hợp các loại công cụ rất hay gặp trong nghiên cứu:
+Nói thực dụng hơn, Antigravity phối hợp các MCP server chuyên dụng cho nghiên cứu:
 
-- công cụ tìm kiếm học thuật để tìm, đối chiếu và truy nguồn bài báo;
-- công cụ web/reasoning để quét bối cảnh, grey literature và stress-test lập luận;
-- công cụ notebook hoặc knowledge workspace để gom notes, theme và synthesis;
-- công cụ OCR/PDF để số hóa tài liệu scan hoặc tài liệu tiếng Việt khó đọc;
-- công cụ code/data để làm sạch dữ liệu, chạy phân tích, tạo bảng và figure;
-- công cụ file/terminal để lưu vết, tổ chức project và tạo output có thể chạy lại.
+- **Consensus MCP** — tìm kiếm trên 200 triệu bài báo peer-reviewed, trả về metadata, trích dẫn và link trực tiếp;
+- **Perplexity MCP** (`perplexity_ask`, `perplexity_reason`, `perplexity_research`) — quét web, grey literature, stress-test lập luận bằng AI có nguồn;
+- **NotebookLM MCP** — gom notes, tạo podcast, quiz, slide, briefing doc, mind map từ nguồn đã thu thập;
+- **Smart PDF OCR MCP** — số hóa tài liệu scan, tự động phân loại trang (digital/scan đơn giản/scan phức tạp) và chọn engine phù hợp;
+- **Playwright MCP** — truy cập web, scrape dữ liệu, chụp screenshot khi cần kiểm chứng trực quan;
+- **Code/Terminal tích hợp** — chạy Python, R, tạo figure, làm sạch dữ liệu, xuất kết quả ngay trong workspace.
 
 Điểm quan trọng không phải là bạn có bao nhiêu tool. Điểm quan trọng là agent có biết **dùng đúng tool cho đúng việc học thuật** hay không. Một workflow tốt không bắt đầu bằng “hãy viết cho tôi câu trả lời”, mà bắt đầu bằng:
 

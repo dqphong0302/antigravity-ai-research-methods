@@ -7,17 +7,7 @@
 
 > *"A thesis is not only a report of findings. It is evidence that you can think systematically, justify your choices, and sustain an argument over a long stretch of work."*
 
----
-
-Viết luận văn hay luận án không giống viết một bài báo ngắn. Đây không chỉ là công việc “gom kết quả rồi viết ra”, mà là một dự án trí tuệ kéo dài nhiều tháng, thậm chí nhiều năm. Nó đòi hỏi bạn vừa phải nghiên cứu, vừa phải tổ chức tài liệu, vừa phải giữ mạch lập luận, vừa phải làm việc với người hướng dẫn, vừa phải giữ vững tinh thần trong một quá trình có nhiều vòng phản hồi và chỉnh sửa.
-
-Chính vì vậy, AI có thể giúp rất nhiều ở giai đoạn này, nhưng không phải theo kiểu “viết hộ cho nhanh”. Giá trị thật của AI nằm ở chỗ nó giúp bạn làm được ba việc khó nhất của một dự án dài hạn:
-
-- giữ cho cấu trúc lập luận không bị vỡ;
-- giảm tải các tác vụ lặp lại như tổng hợp, đối chiếu, rà lỗi, chuẩn hóa hình thức;
-- tạo không gian để bạn dồn sức cho các quyết định học thuật thật sự quan trọng.
-
-Trong bối cảnh Việt Nam, chương này còn quan trọng hơn nữa. Nhiều học viên và nghiên cứu sinh vừa đi học, vừa đi làm, vừa chịu áp lực tiến độ, trong khi việc hướng dẫn có thể không đều, yêu cầu hình thức lại cao, và kỳ vọng của hội đồng nhiều khi không được nói ra một cách thật rõ. Vì vậy, viết luận văn không chỉ là chuyện viết tốt, mà là chuyện **thiết kế và điều hành một dự án học thuật dài hạn một cách tỉnh táo**.
+Chương này hướng dẫn bạn viết luận văn/luận án như một dự án dài hạn: dựng skeleton → viết từng chương → rà coherence toàn bộ → chuẩn bị bảo vệ. AI giúp bạn: **(1)** giữ cấu trúc lập luận nhất quán qua nhiều chương, **(2)** giảm tải tác vụ lặp (đối chiếu, chuẩn hóa, kiểm tra format), **(3)** tạo không gian cho các quyết định học thuật quan trọng. Đặc biệt trong bối cảnh Việt Nam — học viên vừa học vừa làm, hướng dẫn không đều, kỳ vọng hội đồng không rõ — workflow có hệ thống là khác biệt sống còn.
 
 Nếu `Chương 13` là nghệ thuật nén công trình thành một bài báo có đóng góp rõ, thì chương này là nghệ thuật giữ cho cả công trình dài vẫn nhất quán từ đầu đến cuối. Hai năng lực này bổ sung cho nhau: paper giúp bạn sắc hơn, còn luận văn giúp bạn bền hơn. Vì vậy, ngay cả khi bạn không bắt buộc phải công bố bài báo, tư duy của `Chương 13` vẫn rất hữu ích để giữ luận văn không bị tản và không chìm trong chi tiết.
 

@@ -8,21 +8,7 @@
 
 ---
 
-Nhiều người chỉ thật sự nhận ra việc viết bài báo khó đến mức nào khi nghiên cứu đã xong. Dữ liệu đã có, phân tích đã chạy, bảng và hình đã làm, vậy mà bài vẫn không “ra”. Lý do là một bài báo khoa học không phải là nơi bạn kể lại mọi thứ mình đã làm. Nó là nơi bạn xây dựng một lập luận học thuật ngắn, chặt, và có thể thuyết phục người đọc rằng công trình này đáng được lắng nghe.
-
-Đó là một thể loại viết rất khác với luận văn. Luận văn cho phép bạn giải thích dài hơn, biện minh kỹ hơn, giữ lại nhiều bước trung gian hơn. Bài báo thì ngược lại: nó buộc bạn nén tư duy, chọn lọc bằng chứng, và làm nổi bật đúng một đóng góp. Chính vì vậy, viết bài báo thường không chỉ là bước “đóng gói kết quả”, mà là bước kiểm tra xem bạn đã hiểu công trình của mình sắc đến đâu.
-
-AI có thể hỗ trợ rất mạnh ở giai đoạn này. Nó giúp bạn:
-
-- chuyển từ outline sang bản nháp nhanh hơn;
-- rà coherence, chuyển đoạn, và giọng văn học thuật;
-- so sánh findings với literature;
-- kiểm tra reference list, figure captions, formatting;
-- và chuẩn bị phản hồi cho reviewer.
-
-Nhưng AI cũng rất dễ kéo bạn đi sai đường nếu dùng sai cách. Nó có thể viết ra những đoạn nghe học thuật nhưng rỗng, phóng đại đóng góp, hoặc tạo một “giọng văn trơn tru” che lấp những chỗ bạn chưa nghĩ kỹ. Vì vậy, chương này không chỉ đưa prompt viết từng section. Nó tập trung vào câu hỏi quan trọng hơn: **mỗi phần của bài báo thật sự phải làm nhiệm vụ gì trong lập luận tổng thể, và AI nên đứng ở đâu trong quá trình đó**.
-
-Chương này sẽ phát huy mạnh nhất khi bạn bước vào nó với đầu vào đã được chuẩn bị từ `Chương 10-12`: kết quả đủ sạch, figure đủ rõ, caption đủ chín, và thông điệp của findings đã được nén lại thành những đơn vị lập luận có thể viết ra. Khi đó, viết bài báo không còn là “biến dataset thành văn bản”, mà là chọn đúng phần tinh túy nhất của công trình để đưa vào một định dạng công bố ngắn, sắc và có chủ đích.
+Chương này hướng dẫn bạn viết bài báo khoa học theo đúng chức năng từng section: Title/Abstract → Introduction → Methods → Results → Discussion → Conclusion. AI giúp bạn draft nhanh, rà coherence, so sánh findings với literature, chuẩn bị phản hồi reviewer — nhưng không thay bạn quyết định đóng góp chính là gì. Đầu vào tốt nhất là từ `Chương 10-12`: kết quả sạch, figure rõ, caption chín.
 
 ---
 

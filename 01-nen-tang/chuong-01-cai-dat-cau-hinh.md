@@ -523,16 +523,17 @@ graph TB
 
 **Cách đọc sơ đồ:** AI Engine (trung tâm) giao tiếp với 7 nhóm MCP server qua giao thức chuẩn. Mỗi mũi tên hai chiều là một kênh gửi-nhận dữ liệu. Bạn không cần cài tất cả — hãy chọn những gì phục vụ đúng nhu cầu nghiên cứu của mình (xem bảng dưới).
 
-### Bộ connector cốt lõi cho cuốn sách này
+### Bộ MCP server cốt lõi cho cuốn sách này
 
-| Nhóm nhu cầu | Connector gợi ý | Dùng cho |
-|-------------|------------------|----------|
-| **Tìm học thuật** | Academic search | systematic review, xác minh paper, tìm review |
-| **Web + reasoning** | Search/reasoning connector | bối cảnh, grey literature, stress-test logic |
-| **Tri thức cá nhân** | Notebook / knowledge connector | tổng hợp nhiều nguồn, so theme, notes |
-| **Tài liệu khó đọc** | PDF/OCR connector | số hóa PDF scan, tài liệu tiếng Việt, tài liệu in |
-| **Suy nghĩ theo chuỗi** | Sequential thinking / analysis | problem decomposition, theory fit, phản biện |
-| **Code và file** | Built-in execution + filesystem | xử lý dữ liệu, tạo file, lưu output |
+| Nhóm nhu cầu | MCP Server | Function chính | Dùng cho |
+|-------------|------------|---------------|----------|
+| **Tìm học thuật** | **Consensus** | `mcp_consensus_search` | tìm paper peer-reviewed, trả metadata + citations |
+| **Web + reasoning** | **Perplexity** | `perplexity_ask`, `perplexity_reason`, `perplexity_research` | grey literature, stress-test logic, deep research |
+| **Tri thức cá nhân** | **NotebookLM** | `notebook_query`, `studio_create`, `source_add` | gom notes, tạo podcast/quiz/slide/report |
+| **Tài liệu khó đọc** | **Smart PDF OCR** | `ocr_submit`, `ocr_download` | số hóa PDF scan, tài liệu tiếng Việt |
+| **Suy nghĩ theo chuỗi** | **Sequential Thinking** | `sequentialthinking` | problem decomposition, phản biện |
+| **Browser** | **Playwright** | `browser_navigate`, `browser_snapshot` | scrape web, chụp screenshot |
+| **Code và file** | Built-in | Terminal + filesystem | xử lý dữ liệu, tạo file, lưu output |
 
 ### Nguyên tắc chọn connector
 

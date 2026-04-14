@@ -168,9 +168,9 @@ Khi bạn mới có một quan tâm chung, AI rất hữu ích ở vai trò máy
 
 ### Dùng công cụ nào?
 
-- dùng **search/research connector** khi bạn cần overview rộng
-- dùng **reasoning connector** khi bạn cần so sánh logic giữa các hướng
-- dùng **academic search** sớm nếu bạn đã có một cụm từ tương đối cụ thể
+- dùng **Perplexity** (`perplexity_research`) khi bạn cần overview rộng, quét nhiều nguồn
+- dùng **Perplexity** (`perplexity_reason`) khi bạn cần so sánh logic giữa các hướng
+- dùng **Consensus** (`mcp_consensus_search`) sớm nếu bạn đã có một cụm từ cụ thể để tìm paper
 
 ### Prompt gợi ý cho landscape scan
 

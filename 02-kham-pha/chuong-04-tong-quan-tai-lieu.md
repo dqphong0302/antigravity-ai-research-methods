@@ -2,33 +2,13 @@
 
 ![Ai Literature Review](../assets/images/ch04_ai_literature_review_1776092236071.png)
 
----
-
 > *"If I have seen further, it is by standing on the shoulders of giants." — Isaac Newton*
 
 ---
 
-Tổng quan tài liệu là phần nhiều người vừa sợ nhất, vừa dễ làm sai nhất. Sợ nhất vì nó có vẻ vô tận: càng đọc càng thấy còn phải đọc thêm. Dễ làm sai nhất vì người viết rất dễ nhầm rằng tổng quan tài liệu chỉ là việc gom bài báo, tóm tắt phát hiện và chèn citation cho đủ dày.
+Chương này hướng dẫn bạn xây literature review từ đầu đến cuối bằng Antigravity: từ chốt scope, tạo keywords, search có hệ thống, đến tổng hợp thành lập luận học thuật. Đọc xong, bạn sẽ biết dùng **Consensus MCP** để tìm bài báo peer-reviewed, **Perplexity MCP** để quét grey literature, và **NotebookLM MCP** để gom notes thành synthesis.
 
-Nhưng một literature review tốt không phải là một kho chứa summary. Nó là một **lập luận học thuật có cấu trúc**. Nó trả lời những câu hỏi sâu hơn rất nhiều:
-
-- field này đang bàn về vấn đề gì theo những hướng nào
-- ai đang bất đồng với ai, ở đâu, và vì sao
-- lý thuyết nào đang chi phối cách nhìn vấn đề
-- những loại bằng chứng nào đang mạnh, loại nào còn yếu
-- phương pháp nào bị lặp lại quá nhiều, phương pháp nào còn thiếu
-- và nghiên cứu của bạn sẽ bước vào cuộc trò chuyện đó ở đâu
-
-Nếu chương 3 giúp bạn xác định problem statement, thì chương 4 là nơi bạn chứng minh rằng vấn đề đó không phải do bạn "nghĩ ra một mình". Nó tồn tại trong cuộc trò chuyện học thuật rộng hơn, và bạn đã đọc field đủ kỹ để biết:
-
-- người khác đã làm gì
-- họ đã làm đến đâu
-- họ còn bỏ ngỏ điều gì
-- và vì sao nghiên cứu của bạn đáng được đặt thêm vào
-
-AI giúp cực nhiều ở chương này. Nó có thể tìm nhanh hơn, tổ chức notes tốt hơn, gợi ý theme, so sánh phương pháp, phát hiện tension, hỗ trợ bảng ma trận và rà logic. Nhưng AI cũng tạo ra một cám dỗ rất lớn: biến literature review thành một dây chuyền công nghiệp, nơi bạn không còn đọc để hiểu mà chỉ đọc để “sản xuất ra một đoạn review nghe học thuật”.
-
-Cuốn sách này sẽ đi theo hướng ngược lại. Chúng ta dùng Antigravity để **giảm lao động cơ học**, chứ không thay thế việc suy nghĩ. Mục tiêu của chương này không phải là có thật nhiều bài báo trong một thư mục. Mục tiêu là có một tổng quan tài liệu:
+Một literature review tốt không phải là kho chứa summary. Nó là một **lập luận có cấu trúc** — chỉ ra field đang bàn gì, ai bất đồng ở đâu, bằng chứng nào mạnh/yếu, và nghiên cứu của bạn bước vào cuộc trò chuyện đó ở chỗ nào. Cuốn sách này sẽ đi theo hướng ngược lại. Chúng ta dùng Antigravity để **giảm lao động cơ học**, chứ không thay thế việc suy nghĩ. Mục tiêu của chương này không phải là có thật nhiều bài báo trong một thư mục. Mục tiêu là có một tổng quan tài liệu:
 
 - tìm đúng
 - chọn đúng
@@ -230,9 +210,9 @@ Bao gồm:
 
 Sau khi chốt scope và keywords, bạn mới bắt đầu search. Trong Antigravity, bước này thường dùng một phối hợp hợp lý giữa:
 
-- **academic search connector** cho bài báo khoa học
-- **web/reasoning connector** cho grey literature và bối cảnh
-- **OCR/document tools** khi tài liệu ở dạng scan hoặc khó xử lý
+- **Consensus MCP** (`mcp_consensus_search`) — tìm bài báo peer-reviewed, trả về title, authors, abstract, citations, journal score
+- **Perplexity MCP** (`perplexity_ask`, `perplexity_research`) — quét grey literature, policy documents, bối cảnh thực tế
+- **Smart PDF OCR MCP** (`ocr_submit`) — số hóa tài liệu scan, PDF tiếng Việt khó đọc
 
 ### Search strategy theo lớp
 

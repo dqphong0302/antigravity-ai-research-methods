@@ -8,27 +8,7 @@
 
 ---
 
-Thiết kế nghiên cứu định lượng thường bị hiểu như việc chọn một bộ công cụ: làm survey hay experiment, dùng Likert hay thang 7 điểm, cần bao nhiêu mẫu, chạy t-test hay regression. Nhưng ở cấp sâu hơn, thiết kế định lượng là quá trình chuyển một câu hỏi nghiên cứu thành một cấu trúc kiểm chứng được bằng dữ liệu.
-
-Nói cách khác, trước khi nghĩ đến code, phần mềm, hay thống kê, bạn phải trả lời được:
-
-- tôi muốn biết điều gì;
-- điều đó sẽ được đo bằng biến nào;
-- sự khác biệt hay mối quan hệ nào là trung tâm;
-- và thiết kế nào đủ mạnh để tạo ra loại bằng chứng tôi cần.
-
-Đây chính là nơi rất nhiều nghiên cứu bắt đầu lệch. Có đề tài hỏi về nhân quả nhưng chỉ dùng thiết kế mô tả. Có đề tài cần so sánh theo thời gian nhưng lại chỉ đo một lần. Có đề tài chọn thang đo đẹp trên lý thuyết nhưng không phù hợp với đối tượng thật. Có đề tài chạy power analysis rất nghiêm túc nhưng lại đo sai construct từ đầu.
-
-Antigravity rất hữu ích ở giai đoạn thiết kế định lượng vì nó giúp bạn:
-
-- chuyển câu hỏi nghiên cứu thành mô hình biến rõ hơn;
-- so sánh nhiều phương án thiết kế;
-- tính cỡ mẫu và thử các kịch bản;
-- dựng draft questionnaire và kiểm tra content validity;
-- mô phỏng các tình huống thiết kế;
-- và chuẩn bị protocol để bước sang thu thập dữ liệu.
-
-Nhưng như mọi chương khác trong sách này, AI không chọn thiết kế thay bạn. Nó chỉ giúp bạn nhìn rõ lựa chọn, hệ quả, và điểm yếu của từng lựa chọn nhanh hơn.
+Chương này hướng dẫn bạn biến câu hỏi nghiên cứu thành một thiết kế định lượng hoàn chỉnh. Đọc xong, bạn sẽ có: **(1)** RQ-to-design map, **(2)** construct-to-variable map, **(3)** power analysis note, **(4)** instrument draft, **(5)** sampling strategy, và **(6)** data collection protocol. AI giúp bạn so sánh phương án thiết kế, tính cỡ mẫu, dựng draft questionnaire — nhưng quyết định phương pháp vẫn là của bạn.
 
 ---
 

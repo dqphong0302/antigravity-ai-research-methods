@@ -8,18 +8,7 @@
 
 ---
 
-Nếu các chương trước của ebook này giúp bạn làm nghiên cứu nhanh hơn, chương này nhắc một điều quan trọng hơn: **nhanh hơn không tự động đồng nghĩa với tốt hơn**. AI có thể giúp ta đọc nhanh hơn, viết gọn hơn, tổ chức dữ liệu tốt hơn, và thử nhiều hướng phân tích hơn. Nhưng chính vì nó mở rộng năng lực của nhà nghiên cứu, nó cũng mở rộng rủi ro: rủi ro bịa nguồn mà ta không phát hiện, rủi ro diễn giải quá mức, rủi ro làm mờ đi trách nhiệm tác giả, và rủi ro vô tình đưa dữ liệu nhạy cảm vào những hệ thống không phù hợp.
-
-Vì vậy, đạo đức nghiên cứu với AI không nên bị hiểu như một mục "compliance" ở cuối luận văn hay một đoạn khai báo bắt buộc trước khi nộp bài. Đạo đức ở đây là một **năng lực phán đoán**. Nó giúp bạn trả lời những câu hỏi nền tảng:
-
-- Tôi đang dùng AI để tăng chất lượng nghiên cứu hay để né phần lao động trí tuệ mà mình phải tự làm?
-- Tôi còn thực sự hiểu quy trình, dữ liệu và lập luận của mình không?
-- Tôi có thể giải thích với GVHD, hội đồng, reviewer, người tham gia nghiên cứu, hay chính bản thân mình rằng tại sao cách dùng AI này là chấp nhận được không?
-- Nếu một sai sót xảy ra, ai sẽ chịu trách nhiệm và bằng cách nào tôi có thể truy vết nó?
-
-Nói ngắn gọn: **AI có thể tham gia vào workflow nghiên cứu, nhưng không thể thay thế trách nhiệm học thuật của con người**. Chương này sẽ giúp bạn xây dựng một khung đạo đức đủ vững để làm việc cùng AI mà không đánh mất liêm chính, sự cẩn trọng, hay uy tín nghề nghiệp.
-
-Đây cũng là chương gom lại tinh thần của toàn bộ ebook. Những gì bạn đã làm ở các chương trước, từ dựng workspace, ghi log, thiết kế nghiên cứu, thu thập dữ liệu, phân tích, viết bài, viết luận văn, đến truyền thông, đều để lại những quyết định có tính đạo đức. Vì vậy, chương này không đứng ngoài workflow; nó giúp bạn nhìn lại toàn bộ workflow ấy dưới lăng kính trách nhiệm.
+Chương này giúp bạn xây khung đạo đức thực dụng khi dùng AI trong nghiên cứu. Đọc xong, bạn sẽ có: **(1)** checklist tự kiểm trách nhiệm tác giả, **(2)** template khai báo sử dụng AI cho journal/luận văn, **(3)** quy tắc phân loại dữ liệu nhạy cảm (cái nào được/không được đưa vào AI), **(4)** khung phán đoán "dùng AI mức nào là chấp nhận được". Nguyên tắc cốt lõi: **AI tham gia workflow, nhưng trách nhiệm học thuật thuộc về con người**.
 
 ## 16.1 Đạo Đức Không Phải Phần Phụ Lục Của Nghiên Cứu
 

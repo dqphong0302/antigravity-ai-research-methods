@@ -8,19 +8,7 @@
 
 ---
 
-Nghiên cứu không thật sự kết thúc khi luận văn được nộp hay bài báo được chấp nhận. Ở thời điểm đó, công trình mới chỉ hoàn thành một vòng đời học thuật. Nếu tri thức không được truyền thông đến đúng người, theo đúng ngôn ngữ họ có thể tiếp nhận, thì phần lớn giá trị xã hội của nghiên cứu vẫn còn nằm yên trong bản thảo.
-
-Điều này đặc biệt đúng trong bối cảnh hiện nay. Nhà nghiên cứu không chỉ viết cho reviewer, mà còn thường phải:
-
-- báo cáo cho cơ quan quản lý hoặc đơn vị đặt hàng;
-- trình bày cho đồng nghiệp ở hội thảo;
-- giải thích cho sinh viên trong lớp học;
-- chuyển kết quả sang ngôn ngữ dễ hiểu hơn cho công chúng;
-- và đôi khi, phản hồi trước những hiểu lầm hoặc diễn giải sai về chính nghiên cứu của mình.
-
-Antigravity và các công cụ như NotebookLM làm cho công việc này nhanh hơn rất nhiều. Bạn có thể biến một notebook nghiên cứu thành podcast, slide, briefing document, video overview, quiz, hoặc blog post chỉ trong thời gian ngắn. Nhưng tốc độ không phải giá trị lớn nhất. Giá trị lớn nhất là bạn có thể **thiết kế nhiều phiên bản của cùng một sự thật khoa học**, cho nhiều đối tượng khác nhau, mà vẫn giữ trung thực với dữ liệu và giới hạn của công trình.
-
-Chương này vì vậy không chỉ nói về “tạo output gì”. Nó nói về một năng lực sâu hơn: **dịch nghiên cứu sang nhiều ngôn ngữ truyền thông mà không phản bội bản chất khoa học của nó**.
+Chương này hướng dẫn bạn biến 1 notebook nghiên cứu thành nhiều định dạng truyền thông cho nhiều đối tượng: podcast, slide, briefing doc, blog post, quiz, video — tất cả bằng **NotebookLM MCP** (`studio_create`). Đọc xong, bạn sẽ biết: **(1)** map audience → format phù hợp, **(2)** tạo từng loại artifact step-by-step, **(3)** kiểm soát để không diễn giải quá mức kết quả gốc.
 
 Theo nghĩa đó, chương này nhận đầu vào trực tiếp từ `Chương 13` và `Chương 14`: paper, chapter, slide, notebook, figures, discussion đã chốt. Bạn sẽ truyền thông tốt hơn rất nhiều nếu xuất phát từ một bản diễn giải học thuật đã đủ chín, thay vì nhảy thẳng từ dữ liệu thô hoặc ghi chú rời sang nội dung cho công chúng.
 
