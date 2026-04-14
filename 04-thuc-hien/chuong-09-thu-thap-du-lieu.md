@@ -691,6 +691,30 @@ Hai điều này không phải lúc nào cũng giống nhau.
 
 ## 9.12 Workflow Gợi Ý Với Antigravity
 
+Dưới đây là một lưu đồ (Mermaid Flowchart) mô tả quy trình thu thập dữ liệu tự động hóa và có hệ thống:
+
+```mermaid
+graph TD
+    classDef human fill:#1A5F7A,stroke:#22A39F,stroke-width:2px,color:#F3F2C9,font-weight:bold;
+    classDef ai fill:#6C22A6,stroke:#D123B3,stroke-width:2px,color:#FFF,font-weight:bold;
+    classDef artifact fill:#E86A33,stroke:#C63D2F,stroke-width:2px,color:#FFF,font-weight:bold;
+
+    A[1. Define Data Collection Plan & RQs<br><small>Human context</small>]:::human --> B{Determine Data Type}
+    B -->|Secondary Data| C[AI: Retrieve Public Datasets / Indicators<br><small>World Bank / APIs</small>]:::ai
+    B -->|Digital Text/Docs| D[AI: Web Scraping / Playwright<br><small>Public domains only</small>]:::ai
+    B -->|Scan/Print Docs| E[AI: Batch OCR Processing<br><small>Smart OCR Pipeline</small>]:::ai
+    B -->|Primary Survey| F[AI: Generate Survey Items & Forms<br><small>Claude / Scripting</small>]:::ai
+    
+    C --> G[2. Raw Data Aggregation]:::artifact
+    D --> G
+    E --> G
+    F --> G
+
+    G --> H[3. Anonymization & De-identification<br><small>Human validation</small>]:::human
+    H --> I[AI: Automated Data Cleaning & Metadata Extraction<br><small>n8n / Python Scripts</small>]:::ai
+    I --> J((Structured Processed Data<br>Ready for Analysis)):::artifact
+```
+
 Một workflow thực dụng cho chương này có thể là:
 
 1. Chốt data collection plan từ RQ.

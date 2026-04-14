@@ -350,7 +350,27 @@ AI không trung lập. Nó phản ánh thiên kiến trong dữ liệu huấn lu
 
 ## 2.5 Workflow Tổng Quát: Nghiên Cứu Với Antigravity
 
-Dưới đây là quy trình tổng quát mà chúng ta sẽ đi sâu trong các chương tiếp theo:
+Cốt lõi của *Antigravity* được minh họa qua mô hình cộng tác (collaboration model) giữa Nhà nghiên cứu (Human) và Trí tuệ Nhân tạo (AI Agent).
+
+```mermaid
+graph TD
+    classDef human fill:#1A5F7A,stroke:#22A39F,stroke-width:2px,color:#F3F2C9,font-weight:bold;
+    classDef ai fill:#6C22A6,stroke:#D123B3,stroke-width:2px,color:#FFF,font-weight:bold;
+    classDef artifact fill:#E86A33,stroke:#C63D2F,stroke-width:2px,color:#FFF,font-weight:bold;
+
+    A[1. Identify Research Problem<br><small>Human intuition & Context setting</small>]:::human --> B{Does Scope<br>Need Narrowing?}
+    B -->|Yes| C[AI: Semantic Search & Brainstorming<br><small>Perplexity / Consensus</small>]:::ai
+    C --> A
+    B -->|No| D[2. Literature Synthesis<br><small>Extracting gaps & framework</small>]:::human
+    D --> E[AI: Source Parsing & Matrix Generation<br><small>Smart OCR / NotebookLM</small>]:::ai
+    E --> F[3. Methodological Design<br><small>Human justifies design choices</small>]:::human
+    F --> G[4. Data Collection & Processing<br><small>Cleaning data artifacts</small>]:::ai
+    G --> H[5. Statistical / Qualitative Analysis<br><small>Human interpretation</small>]:::human
+    H --> I[AI: Visualizations & Draft Structuring<br><small>Python Scripts / Code Gen</small>]:::ai
+    I --> J((Final Academic<br>Publication)):::artifact
+```
+
+Dưới đây là chi tiết quy trình tổng quát (5 Phases) tương ứng với các giai đoạn mô tả trong lưu đồ mà chúng ta sẽ đi sâu trong sơ đồ trên:
 
 ```
 Phase 1: EXPLORE (Khám phá)

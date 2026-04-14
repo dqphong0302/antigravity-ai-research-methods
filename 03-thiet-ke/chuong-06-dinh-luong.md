@@ -96,6 +96,10 @@ Ví dụ:
 
 Nếu bạn chưa trả lời rõ, chưa nên khóa thiết kế.
 
+> 💬 **Góc Hỏi Đáp Thực Chiến (Q&A)**
+> **Q: Thế nào là Hypothesis (Giả thuyết) và nó khác gì với Theory (Lý thuyết)?**
+> **A:** Lý thuyết (Theory) là một hệ thống các giả định và nguyên lý được tổ chức lại để giải thích một hiện tượng rộng lớn (vd: Thuyết nhận thức xã hội). Trong khi đó, Giả thuyết (Hypothesis) là một dự đoán cụ thể, hẹp hơn, và có thể mang ra kiểm định thống kê được trong một nghiên cứu nhất định. Thiết kế tốt là đưa Lý thuyết thành nhiều Giả thuyết nhỏ để test.
+
 ---
 
 ## 6.3 Các Thiết Kế Định Lượng Chính và Khi Nào Nên Dùng
@@ -523,6 +527,10 @@ Thiết kế định lượng không kết thúc ở khâu “chọn survey”. 
 - cỡ mẫu tối thiểu là bao nhiêu;
 - tỷ lệ phản hồi kỳ vọng là bao nhiêu;
 - nếu response rate thấp thì phương án dự phòng là gì.
+
+> 💬 **Góc Hỏi Đáp Thực Chiến (Q&A)**
+> **Q: "Sample" (Mẫu) và "Population" (Quần thể) khác nhau như thế nào, và tại sao nó lại quan trọng trong Sampling Strategy?**
+> **A:** Population là *toàn bộ* nhóm đối tượng mà bạn muốn khái quát hóa kết quả (vd: toàn bộ học sinh THPT ở Hà Nội). Sample là một *nhóm nhỏ, đại diện* được rút ra từ Population đó để trực tiếp tham gia nghiên cứu (vd: 500 học sinh từ 5 trường). Lỗi lớn nhất của sinh viên là chọn một Sample không mang tính đại diện nhưng lại kết luận cho toàn bộ Population.
 
 ### Data collection protocol nên có
 

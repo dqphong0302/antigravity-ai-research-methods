@@ -104,6 +104,10 @@ Không chỉ để “mô tả cho có”, mà để hiểu dữ liệu trước
 
 Lúc này bạn mới chạy test hoặc mô hình chính, chứ không phải từ đầu.
 
+> 💬 **Góc Hỏi Đáp Thực Chiến (Q&A)**
+> **Q: Em có kết quả khảo sát (Mean, SD). Vì sao phải chạy thêm Inferential Statistics (t-test/ANOVA)?**
+> **A:** Thống kê mô tả (Descriptive) chỉ nói lên sự khác biệt trong *Mẫu (Sample)* của bạn. Sếp hoặc nhà khoa học khác sẽ hỏi: "Liệu sự khác biệt đó có đúng với toàn bộ *Quần thể (Population)* không, hay chỉ do nhóm bạn chọn ngẫu nhiên rơi vào đó?". Thống kê suy luận (Inferential) giúp bạn trả lời câu hỏi khái quát hóa này bằng xác suất.
+
 **Effect size & robustness**
 
 Một kết quả có p nhỏ chưa chắc quan trọng về mặt thực chất. Bạn phải xem effect size và độ ổn định của kết quả.
@@ -570,6 +574,10 @@ Nhiều người dừng ở chỗ “p < .05”. Đây là một điểm dừng 
 ### Ví dụ
 
 Một biến có thể có p < .001 nhưng effect size rất nhỏ. Trong mẫu lớn, điều này rất thường xảy ra. Nếu chỉ báo “có ý nghĩa thống kê” mà không nói mức độ tác động, người đọc rất dễ hiểu quá mức.
+
+> 💬 **Góc Hỏi Đáp Thực Chiến (Q&A)**
+> **Q: Người ta hay nói tìm p < .05. Vậy p-value thực chất mang ý nghĩa gì?**
+> **A:** Hãy coi p-value như thước đo của sự "tình cờ". Nó trả lời câu hỏi: *Nếu thực tế không có liên hệ gì (Null Hypothesis đúng), thì xác suất tôi thu được bộ dữ liệu này (do lấy mẫu ngẫu nhiên trùng hợp) là bao nhiêu?* Khi p < .05 (nghĩa là < 5%), xác suất trùng hợp quá thấp, nên ta tự tin bác bỏ khả năng tình cờ và kết luận rằng có hiện tượng thật sự (Statistical significance). Tuy nhiên, nó không cho biết hiện tượng đó mạnh cỡ nào (chỉ Effect size mới làm được).
 
 ### Prompt cho hồi quy
 

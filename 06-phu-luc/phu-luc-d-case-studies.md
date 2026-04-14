@@ -332,6 +332,44 @@ Một workflow nghiên cứu tốt nên được đánh giá trước hết bằ
 
 Journal cụ thể, điểm số cụ thể, hay thời gian rút ngắn bao nhiêu chỉ là kết quả phụ thuộc bối cảnh. Nếu lấy chúng làm thước đo chính, rất dễ trượt khỏi tinh thần của cả cuốn sách.
 
+## D.5 Capstone Project: Cấu Trúc Báo Cáo Đánh Giá Khung Nghiên Cứu
+
+Tất cả các case studies phía trên đều có thể được chuẩn hóa lại thành một bài **Individual Research Report** (8-10 trang) như một dự án Capstone cuối kỳ. Dưới đây là cấu trúc minh họa cho dạng bài tập rèn luyện tư duy thiết kế, không nặng về ra quyết định thực tế mà xoáy thẳng vào *tính logic của phương pháp*.
+
+### 1. Introduction (Dẫn nhập - 1 trang)
+*   **Context:** Giới thiệu bối cảnh và chủ đề nghiên cứu.
+*   **RQ/Hypothesis:** Tuyên bố rõ ràng Câu hỏi hoặc Giả thuyết cốt lõi.
+*   **Methodological Focus:** Giải thích ý nghĩa học thuật của việc nghiên cứu bài toán này và phác mộc cấu trúc báo cáo.
+
+### 2. Literature Review and Theoretical Framework (Khung lý thuyết - 1.5 đến 2 trang)
+*   **Synthesis:** Tóm tắt các lý thuyết và khái niệm liên quan.
+*   **Design Rationale:** Thảo luận cách literature định hình việc chọn biến số, constructs, và phép phân tích.
+*   **Methodological Gap:** Chỉ ra khoảng trống phương pháp (không phải khoảng trống nội dung) mà thiết kế này lấp đầy.
+
+### 3. Research Design and Methodology (Thiết kế Nghiên cứu - 1.5 đến 2 trang)
+Đây là "trái tim" của báo cáo Capstone, cần làm rõ 5 yếu tố:
+1.  **Research Philosophy:** Nhận thức luận (Positivism, Interpretivism, Pragmatism) và cách nó chi phối.
+2.  **Research Approach:** Suy diễn (Deductive) hay Quy nạp (Inductive).
+3.  **Data Collection:** Nguồn dữ liệu, công cụ thu thập và lý do chọn lựa.
+4.  **Sampling:** Xác định quần thể, kích thước mẫu, phương pháp lấy mẫu và biện luận.
+5.  **Analysis Techniques:** Các kỹ thuật (VD: Regression, Thematic, ANOVA) và giải thích tại sao lại dùng chúng. Đề cập thêm vấn đề Đạo đức (Ethical considerations).
+
+### 4. Data Analysis and Findings (Trình bày Dữ liệu - 2 đến 2.5 trang)
+*   Báo cáo kết quả bằng bảng biểu, sơ đồ (chạy qua dữ liệu giả lập hoặc thực tế).
+*   Chỉ bám vào RQ/H, tuyệt đối không "suy diễn" vượt ra ngoài những gì dữ liệu nói.
+*   Bàn luận ý nghĩa thống kê hoặc ý nghĩa định tính một cách minh bạch.
+
+### 5. Evaluation of Research Design (Đánh giá Khung Thiết Kế - 1 đến 1.5 trang)
+*   Đánh giá phản biện (Critically assess) điểm mạnh và hạn chế của phương pháp đã chọn.
+*   So sánh với các phương pháp thay thế (Alternative methods) và bàn luận sự đánh đổi (Trade-offs).
+*   Đề xuất cải thiện (Ví dụ: Thêm mẫu lớn hơn, đổi mô hình, hoặc chuyển sang Mixed-methods).
+
+### 6. Conclusion (Kết luận - 1 trang)
+*   Tóm tắt dự án, quyết định phương pháp và kết quả chính.
+*   Suy ngẫm (Reflect) về tính nghiêm ngặt để tạo ra tri thức đáng tin cậy.
+
+> *Capstone Project này nhằm kiểm chứng khả năng áp dụng Antigravity Workflow ở mức cao nhất: Không chỉ biết cách làm một nghiên cứu, mà còn biết cách tự phê bình (critique) chính thiết kế của mình.*
+
 ---
 
 > 📖 **Quay lại:** [Mục Lục →](../README.md)

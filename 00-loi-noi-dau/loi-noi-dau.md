@@ -82,6 +82,13 @@ Cuốn sách được tổ chức theo **quy trình nghiên cứu tự nhiên** 
 ### 🛠️ Đọc như sách tham khảo
 Phụ lục chứa prompt frameworks, checklists, templates, và case studies để bạn thích nghi theo dự án thật. Chúng không nhằm biến bạn thành người “chép prompt”, mà giúp bạn đặt đúng việc cho agent và đúng công cụ cho workflow nghiên cứu.
 
+### 🗺️ Đọc đồng hành cùng Syllabus 6-Tuần
+Nếu bạn đang sử dụng cuốn sách này như tài liệu bổ trợ cho khóa học Phương Pháp Nghiên Cứu chuẩn 6 tuần, đây là lộ trình mapping gợi ý:
+- **Lesson 1 & 2 (Cơ sở & Đo lường):** Đọc Chương 1, 2 và Chương 6 để hiểu cách định nghĩa biến số, giả thuyết.
+- **Lesson 3 (Mô tả & Dữ liệu):** Đọc Chương 9 (Thu thập dữ liệu) và đối chiếu với Phụ Lục B (Checklists).
+- **Lesson 4, 5 & 6 (Kiểm định & Thực nghiệm):** Đọc kỹ Chương 10 (Phân tích định lượng) để làm chủ t-Test, Correlation, Regression.
+- **Final Assignment (Dự án cuối kỳ):** Tham khảo Phụ Lục D (Case Study số 4: Capstone Project) để có bộ khung tư duy từ đầu đến cuối báo cáo đo lường thực tế.
+
 ---
 
 ## Quy Ước Trong Sách

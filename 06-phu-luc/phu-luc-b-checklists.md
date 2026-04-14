@@ -142,7 +142,21 @@ Bạn có thể ghi thêm nhãn nhỏ bên cạnh mỗi mục:
 
 ---
 
-## B.11 Dấu Hiệu Checklist Đang Được Dùng Đúng
+## B.11 Quick Review: Design & Stats Cheat Sheet
+
+Bảng tóm tắt nhanh (Cheat Sheet) dưới đây giúp bạn rà rà soát lại các khái niệm thống kê và thiết kế nghiên cứu cốt lõi nhất, nhằm tránh những lỗi sai ngớ ngẩn (rookie mistakes) khi lập luận hoặc khi đọc các bài báo khoa học.
+
+| Khái Niệm Quan Trọng | Lỗi Hiểu Sai Thường Gặp | Cách Hiểu Đúng (Thực Chiến) |
+| --- | --- | --- |
+| **Theory vs. Hypothesis** | Coi giả thuyết là "đoán bừa", lý thuyết là "sự thật tuyệt đối". | **Lý thuyết** là khung giải thích tổng thể dựa trên bằng chứng.<br>**Giả thuyết** là dự đoán cụ thể, có thể kiểm chứng bằng dữ liệu trong *một bối cảnh hẹp*. |
+| **Population vs. Sample** | Chỉ lo lấy mẫu càng lớn càng tốt, bất kể đối tượng là ai. | **Quần thể** là toàn bộ đối tượng ta muốn kết luận.<br>**Mẫu** là nhóm nhỏ thực tế lấy dữ liệu. Mẫu nhỏ nhưng *đại diện tốt* mang lại kết quả đáng tin hơn mẫu khổng lồ nhưng *bị lệch (biased)*. |
+| **Descriptive vs. Inferential** | Tính trung bình mẫu xong vội kết luận đó là sự thật cho toàn xã hội. | **Mô tả (Descriptive)**: Tóm tắt bức tranh của *chính dữ liệu bạn đang có* (số Mean, độ võng, v.v.).<br>**Suy luận (Inferential)**: Dùng xác suất để xem có đủ cơ sở để *khái quát hoá* lên quần thể hay không. |
+| **p-value** | Định kiến rằng `p < 0.05` tức là nghiên cứu thành công rực rỡ và mô hình đúng 95%. | `p-value` nhỏ đơn giản là việc kết quả này xảy ra *do ăn may (random chance)* là rất khó rớt vào. Ta bác bỏ cái ngẫu nhiên để ủng hộ có một hiệu ứng thật (statistical significance). (Chú ý: có ý nghĩa thống kê chưa chắc có ý nghĩa thực tiễn!). |
+| **Correlation vs. Causation** | Thấy A tăng cùng độ tăng của B thì lập tức chốt A gây ra B. | Tương quan chỉ nói chúng *dao động cùng nhau*. Nhân quả cần cơ sở lý thuyết bền vững (Cơ chế nào?), yếu tố thời gian (Cái nào có trước?) và triệt tiêu được các biến ngoại lai (Z-factors). |
+
+---
+
+## B.12 Dấu Hiệu Checklist Đang Được Dùng Đúng
 
 Checklist này đang hữu ích nếu:
 
