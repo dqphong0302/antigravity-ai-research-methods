@@ -324,6 +324,73 @@ Ví dụ:
 - thư mục nào đã ẩn danh
 - connector nào được phép dùng với loại dữ liệu nào
 
+### 5. Dùng thư mục `examples/` như một thư viện chuẩn thao tác
+
+Đây là phần hiện nhiều người bỏ lỡ khi bắt đầu làm việc với AI agent cho nghiên cứu. Template, example project, và skill không phải là ba thứ giống nhau. Chúng phục vụ ba tầng khác nhau của workflow:
+
+- `examples/templates/` là nơi chứa **artifact mẫu**;
+- `examples/skills/` là nơi chứa **workflow mẫu đã được đóng gói**;
+- `examples/sample-skill-research/` là một **skill hoàn chỉnh ở mức tối thiểu**;
+- `examples/sample-project-photocatalysis/` là một **project mẫu có file, script và output thật**.
+
+Hiểu nhanh:
+
+- nếu bạn cần một file để bắt đầu viết hoặc ghi log, hãy lấy từ `templates/`;
+- nếu bạn có một loại việc lặp đi lặp lại và muốn agent làm nhất quán, hãy nhìn sang `skills/`;
+- nếu bạn muốn xem một skill cần cấu trúc ra sao, hãy mở `sample-skill-research/SKILL.md`;
+- nếu bạn muốn thấy data + script + output nối với nhau thế nào, hãy xem `sample-project-photocatalysis/`.
+
+### Template không phải skill
+
+Một template thường là:
+
+- một file `README.md`;
+- một `ai-use-log.md`;
+- một `data-management-plan.md`;
+- một `consent-form.md`;
+- hoặc một `research-proposal.md`.
+
+Template trả lời câu hỏi: **"Tôi nên bắt đầu file này theo khung nào?"**
+
+Skill thì khác. Skill trả lời câu hỏi: **"Khi loại việc này lặp lại, agent phải làm theo trình tự nào để không làm ẩu?"**
+
+Ví dụ:
+
+- `literature matrix` là một artifact;
+- còn "quét thư mục PDF, trích metadata, tổng hợp thành literature matrix, dừng nếu file lỗi" là một skill.
+
+### Một skill tối thiểu nên có gì?
+
+Từ các ví dụ trong thư mục `examples/skills/` và `examples/sample-skill-research/`, bạn có thể xem một skill như một **chuẩn thao tác** cho agent. Tối thiểu nó nên nói rõ:
+
+- skill này dùng cho giai đoạn nào của nghiên cứu;
+- đầu vào hợp lệ là gì;
+- agent được phép làm những bước nào;
+- được phép dùng tool/script nào;
+- điều gì tuyệt đối không được bịa hoặc suy diễn;
+- khi thất bại thì phải dừng và báo thế nào;
+- đầu ra cuối cùng phải là artifact gì.
+
+Nếu thiếu các phần này, cái bạn có thường chỉ là một prompt dài, chưa phải skill.
+
+### Cách dùng thực dụng trong dự án của bạn
+
+Một cách làm rất hiệu quả là:
+
+1. Bắt đầu bằng cách copy các file cần thiết từ `examples/templates/` vào workspace của bạn.
+2. Làm nghiên cứu thật trong vài phiên để xem những loại việc nào lặp lại.
+3. Khi một việc lặp lại từ 3 lần trở lên, hãy hỏi: việc này có nên nâng thành skill không?
+4. Nếu có, lấy một skill gần nhất từ `examples/skills/` hoặc `sample-skill-research/` làm khung.
+5. Chỉnh lại cho đúng đề tài, tool, đường dẫn file, và mức kiểm chứng của dự án mình.
+
+Ví dụ rất đời thường:
+
+- lúc đầu bạn dùng template `ai-use-log.md` để ghi log bằng tay;
+- sau vài tuần, bạn nhận ra mình cứ lặp lại cùng một workflow "đọc thư mục PDF -> trích thông tin -> tạo matrix";
+- lúc đó, thay vì mỗi lần viết prompt từ đầu, bạn đóng gói workflow đó thành một skill literature-review riêng cho dự án.
+
+Đây chính là lúc workspace của bạn bắt đầu trưởng thành: từ chỗ có vài file mẫu sang chỗ có **các thao tác chuẩn có thể tái sử dụng**.
+
 ## 1.8 Phân Vai Model Và Tool Theo Kiểu Việc, Không Theo Tên Gọi
 
 Một sai lầm rất hay gặp là hỏi: "Model nào mạnh nhất?" Câu hỏi hữu ích hơn trong nghiên cứu là: **với việc này, tôi cần kiểu model nào và cần tool nào đi kèm?**

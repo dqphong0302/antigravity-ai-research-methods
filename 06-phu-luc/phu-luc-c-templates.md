@@ -331,7 +331,93 @@ my-research-project/
 
 ---
 
-## C.10 Cách Dùng Template Đúng Cách
+## C.10 Dùng `examples/templates` Và `examples/skills` Như Một Bộ Chuẩn
+
+Nếu bạn chỉ đọc phụ lục này như một nơi "copy vài file mẫu", bạn mới dùng được một nửa giá trị của repo. Nửa còn lại nằm ở việc hiểu mối quan hệ giữa:
+
+- `templates` như chuẩn cho **artifact**;
+- `skills` như chuẩn cho **workflow tái sử dụng**;
+- và `sample project` như ví dụ cho một dự án có file, script, và output nối với nhau thật.
+
+### Phân biệt 3 tầng
+
+#### 1. `examples/templates/` = chuẩn file đầu ra
+
+Đây là nơi bạn lấy các mẫu để đưa thẳng vào project:
+
+- `research-proposal.md`
+- `ai-use-log.md`
+- `consent-form.md`
+- `data-management-plan.md`
+- `ai-disclosure.md`
+
+Chúng trả lời câu hỏi:
+
+- file này nên bắt đầu bằng khung nào;
+- tối thiểu cần có các mục gì;
+- phải ghi gì để còn truy vết và disclosure về sau.
+
+#### 2. `examples/skills/` = chuẩn workflow cho agent
+
+Đây không còn là file để điền tay. Đây là mẫu cho cách đóng gói một loại việc học thuật lặp lại thành skill.
+
+Ví dụ một skill tốt thường nói rõ:
+
+- khi nào được dùng;
+- input là gì;
+- các bước agent được phép làm;
+- tool/script nào được gọi;
+- anti-hallucination rules;
+- đầu ra phải tạo thành file hoặc bảng nào.
+
+#### 3. `examples/sample-skill-research/` = mẫu skill tối thiểu hoàn chỉnh
+
+Thư mục này đặc biệt hữu ích nếu bạn chưa từng tự viết skill cho agent. Nó cho bạn thấy một skill không chỉ có prompt, mà còn có:
+
+- `SKILL.md` để định nghĩa quy tắc;
+- `prompts/` để chuẩn hóa giao việc;
+- `scripts/` để xử lý phần kỹ thuật lặp lại.
+
+### Cách dùng thực dụng nhất
+
+Bạn có thể đi theo trình tự sau:
+
+1. Copy các file cần thiết từ `examples/templates/` vào workspace nghiên cứu của mình.
+2. Dùng chúng bằng tay trong vài phiên làm việc thật.
+3. Quan sát loại việc nào lặp đi lặp lại nhiều lần.
+4. Với việc lặp lại đó, mở `examples/skills/` hoặc `sample-skill-research/` để xem có thể chuẩn hóa thành skill hay không.
+5. Chỉ sau đó mới tạo skill riêng cho đề tài của mình.
+
+### Một ví dụ rất dễ hình dung
+
+Giả sử bạn đang làm literature review:
+
+- đầu tiên, bạn copy `ai-use-log.md` và `research-proposal.md` vào project;
+- sau vài phiên, bạn nhận ra mình liên tục làm lại cùng một chuỗi việc:
+  - quét thư mục PDF,
+  - trích metadata,
+  - tóm tắt abstract,
+  - đưa vào literature matrix,
+  - đánh dấu bài nào phải đọc gốc.
+
+Lúc này, thay vì mỗi lần viết lại prompt, bạn nên nâng chuỗi đó thành một skill literature-review riêng. Template vẫn cần, nhưng skill sẽ giúp agent làm chuỗi bước đó nhất quán hơn.
+
+### Quy tắc ngắn gọn để khỏi nhầm
+
+- Nếu bạn cần **một file để điền hoặc lưu output**, hãy tìm ở `templates/`.
+- Nếu bạn cần **một quy trình để agent làm lặp lại**, hãy nhìn sang `skills/`.
+- Nếu bạn cần **một ví dụ hoàn chỉnh có project thật, script thật, output thật**, hãy xem `sample-project` hoặc `sample-skill`.
+
+Nói cách khác:
+
+- template chuẩn hóa **hình dạng của artifact**;
+- skill chuẩn hóa **trình tự thao tác của agent**.
+
+Khi hai thứ này đi cùng nhau, workflow nghiên cứu mới thật sự trưởng thành.
+
+---
+
+## C.11 Cách Dùng Template Đúng Cách
 
 Template này đang giúp bạn nếu:
 
@@ -345,7 +431,7 @@ Template này đang làm hại bạn nếu:
 - bạn điền cho đủ mà không thật sự dùng lại;
 - hoặc bạn tạo thêm quá nhiều biểu mẫu khiến dự án nặng hơn chính nghiên cứu.
 
-Luôn nhớ: template là công cụ phục vụ workflow, không phải workflow tự nó.
+Luôn nhớ: template là công cụ phục vụ workflow, không phải workflow tự nó. Và khi workflow đã đủ ổn định, hãy nghĩ đến việc nâng nó thành skill.
 
 ---
 

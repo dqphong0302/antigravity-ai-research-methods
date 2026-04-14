@@ -140,6 +140,73 @@ Một phiên làm việc tốt với agent không chỉ kết thúc bằng "tôi
 
 Agent có thể hỗ trợ các bước dẫn tới quyết định. Nhưng quyết định học thuật cuối cùng vẫn phải là của bạn.
 
+### Khi nào một workflow nên được nâng từ prompt thành skill?
+
+Đây là một bước rất thực dụng mà nhiều người dùng AI cho nghiên cứu chưa làm tới. Ban đầu, bạn thường bắt đầu bằng brief hoặc prompt. Điều đó hoàn toàn bình thường. Nhưng khi một loại việc bắt đầu lặp lại nhiều lần, chỉ dùng prompt sẽ dần bộc lộ nhược điểm:
+
+- mỗi lần lại phải viết lại gần từ đầu;
+- agent dễ quên một bước kiểm chứng;
+- đầu ra giữa các phiên không đồng nhất;
+- người khác trong nhóm khó tái sử dụng workflow của bạn.
+
+Đó là lúc nên nghĩ tới **skill**.
+
+Trong ngữ cảnh của ebook này, skill là một workflow đã được đóng gói đủ rõ để agent làm đi làm lại với mức ổn định cao hơn. Nó thường gồm:
+
+- mục đích;
+- phạm vi áp dụng;
+- trình tự bước làm;
+- tool/script được phép dùng;
+- các quy tắc chống bịa và điều kiện phải dừng;
+- đầu ra cuối cùng cần tạo.
+
+### 4 dấu hiệu cho thấy đã đến lúc tạo skill
+
+1. **Bạn đã làm cùng một loại việc ít nhất 3 lần**  
+   Ví dụ: quét thư mục PDF và tạo literature matrix, audit bộ dữ liệu khảo sát, hay rà cấu trúc một chương bản thảo.
+
+2. **Việc đó có trình tự khá ổn định**  
+   Tức là mỗi lần làm, bạn gần như vẫn phải đi qua cùng một chuỗi bước.
+
+3. **Việc đó cần chống sai sót lặp lại**  
+   Ví dụ: không được bịa metadata, không được bỏ qua bước primary-source check, không được chạm vào raw data.
+
+4. **Đầu ra mong muốn đã đủ rõ**  
+   Bạn biết cuối cùng mình cần file gì, bảng gì, script gì, hay log gì.
+
+### Template và skill phối hợp với nhau thế nào?
+
+Một cách nhìn rất thực dụng là:
+
+- **template** cho bạn một artifact chuẩn để điền hoặc tạo ra;
+- **skill** cho agent biết phải tạo artifact đó theo trình tự nào.
+
+Ví dụ:
+
+- `ai-use-log.md` là template;
+- còn "sau mỗi phiên literature review, ghi log các tool đã dùng, mức kiểm chứng, và output used in" có thể trở thành một phần của skill review literature.
+
+Một ví dụ khác:
+
+- `research-proposal.md` là template;
+- còn "đọc problem statement, stress-test RQ, rà logic phương pháp, rồi điền các phần còn trống trong đề cương" là workflow có thể nâng thành skill methodology-reviewer.
+
+### Dùng các ví dụ trong repo như thế nào?
+
+Bạn có thể dùng chúng theo thứ tự rất tự nhiên:
+
+1. Lấy file từ `examples/templates/` để dựng artifact nền.
+2. Xem `examples/skills/` để hiểu một workflow tái dùng được trông ra sao.
+3. Mở `examples/sample-skill-research/SKILL.md` để thấy một skill tối thiểu thường có những phần nào.
+4. Chỉ sau khi đã chạy workflow bằng tay vài lần, mới đóng gói nó thành skill riêng cho đề tài của mình.
+
+Đừng tạo skill quá sớm. Nếu chưa hiểu rõ workflow thật, skill sẽ chỉ là một prompt dài được đổi tên. Skill tốt xuất hiện sau khi bạn đã biết:
+
+- việc đó bắt đầu từ đâu;
+- tool nào thật sự cần;
+- chỗ nào phải kiểm chứng tay;
+- và chỗ nào phải dừng thay vì để agent đoán tiếp.
+
 ---
 
 ## 2.2 Verification Protocol — Quy Trình Kiểm Chứng 3 Bước
